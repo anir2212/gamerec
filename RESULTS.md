@@ -1,0 +1,41 @@
+# GameRec measured results
+
+All numbers on this page come from the **seed-7 synthetic corpus** and local scripts. They are development measurements, not claims about real players. `runs/` contains the generated JSON files and is ignored by Git; the commands in the README recreate them.
+
+## Data and offline ranking
+
+`OPENBLAS_NUM_THREADS=1 .venv/bin/python -m recstack.run --seed 7` produced 3,000 interactions from 120 fictional users and 80 games. Per-user temporal splitting gave **1,808 train**, **596 validation**, and **596 test** interactions. Ten users had at most three training interactions; 22 catalog items had at most five, with 27 test events on those items. A user is scored only if they have a novel test item not already owned in training, leaving **97 overall**, **7 short-history**, and **21 cold-item** evaluation users. These small cold denominators matter.
+
+Validation NDCG@10 selected the **genre-content** scorer. The table below reports untouched test results; intervals are 95% percentile bootstrap intervals over users with 400 resamples. Content means genre preference plus a small popularity tie-breaker, not learned text embeddings.
+
+| Model | Overall NDCG@10 (95% CI) | Overall Recall@10 | Cold-item NDCG@10 | Cold-item Recall@10 |
+|---|---:|---:|---:|---:|
+| Popularity | 0.2510 (0.1942–0.3196) | 0.3393 | 0.0000 | 0.0000 |
+| Item cosine kNN | 0.3854 (0.3223–0.4492) | 0.5679 | 0.2170 | 0.6429 |
+| Implicit ALS | 0.1741 (0.1297–0.2111) | 0.3333 | 0.0717 | 0.1905 |
+| BPR | 0.3598 (0.2957–0.4282) | 0.5438 | 0.1996 | 0.5714 |
+| Genre content | **0.4026 (0.3446–0.4662)** | **0.5971** | 0.2169 | **0.6905** |
+
+The cold-item NDCG difference between genre content and item kNN is negligible in this small synthetic slice; the measured recall difference alone does not prove a robust improvement. ALS is weak under the current fixed settings and was not tuned. The JSON report also contains MAP, hit rate, coverage, novelty and @20 values. No Steam, text-embedding, two-tower, LambdaRank or FAISS result exists yet.
+
+## Local serving
+
+The FastAPI `TestClient` test passed for owned-item exclusion, a declared-genre unknown-user fallback, five unique returned items, and invalid-method rejection. A separate loopback server benchmark warmed model loading and then sent open-loop requests for five seconds at each rate:
+
+| Target rate | Requests | Achieved rate | Errors | p50 | p95 | p99 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 50/s | 250 | 50.17/s | 0 | 1.78 ms | 4.93 ms | 19.18 ms |
+| 200/s | 1,000 | 200.10/s | 0 | 1.67 ms | 2.58 ms | 7.86 ms |
+
+These are one short local run each, with a tiny 80-item catalog and no Redis/network deployment. The p95 inversion between rates shows ordinary run noise; it is not evidence that higher load improves latency. The server process was stopped after the run.
+
+## Experiment toolkit
+
+`OPENBLAS_NUM_THREADS=1 .venv/bin/python -m recstack.experiment_run` measured:
+
+- An **offline held-out hit proxy** with deterministic user assignment: ALS control 27/54 = 50.0%, genre-content treatment 35/43 = 81.4%, observed difference **+31.40 percentage points**, bootstrap 95% CI **+13.35 to +48.06 points**, two-sided pooled z-test p = 0.00138. SRM chi-square p = 0.264. This is a synthetic, retrospective proxy with 97 users and no impressions, randomization in a live product, or actual clicks; it cannot justify a launch decision.
+- A power example at 20% baseline and one percentage point absolute lift gave **25,583 users per arm** for two-sided alpha 0.05 and 80% power under the normal approximation.
+- CUPED on a 2,000-row correlated synthetic fixture reduced outcome variance by **35.86%** (theta 0.7576). This is a unit fixture, not measured variance reduction in an experiment.
+- In 500 seeded null simulations with ten daily uncorrected looks, the fixed-horizon false-positive fraction was **7.4%** and the fraction with any daily p < 0.05 was **22.6%**. Monte Carlo noise applies, but this illustrates the peeking problem.
+
+`OPENBLAS_NUM_THREADS=1 .venv/bin/python -m pytest -q` passed **8 tests**, including a deliberate temporal-leakage failure, owned-item exclusion, API behavior, SRM, bootstrap inference and CUPED variance reduction. The historical prototype tests remain included. No real Cookie Cats CSV was used because the inspected data card lists its licence as unknown.
