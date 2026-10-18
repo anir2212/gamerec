@@ -6,7 +6,7 @@ All numbers on this page come from the **seed-7 synthetic corpus** and local scr
 
 `OPENBLAS_NUM_THREADS=1 .venv/bin/python -m recstack.run --seed 7` produced 3,000 interactions from 120 fictional users and 80 games. Per-user temporal splitting gave **1,808 train**, **596 validation**, and **596 test** interactions. Ten users had at most three training interactions; 22 catalog items had at most five, with 27 test events on those items. A user is scored only if they have a novel test item not already owned in training, leaving **97 overall**, **7 short-history**, and **21 cold-item** evaluation users. These small cold denominators matter.
 
-Validation NDCG@10 selected the **genre-content** scorer. The table below reports untouched test results; intervals are 95% percentile bootstrap intervals over users with 400 resamples. Content means genre preference plus a small popularity tie-breaker, not learned text embeddings.
+With the added TF-IDF description baseline, validation NDCG@10 selected **text** (0.3875 versus 0.3703 for genre content). The table below reports untouched test results; intervals are 95% percentile bootstrap intervals over users with 400 resamples. Genre content means genre preference plus a small popularity tie-breaker. Text means TF-IDF of the generated item description, weighted by training-play confidence; it is not a learned semantic encoder.
 
 | Model | Overall NDCG@10 (95% CI) | Overall Recall@10 | Cold-item NDCG@10 | Cold-item Recall@10 |
 |---|---:|---:|---:|---:|
@@ -14,13 +14,14 @@ Validation NDCG@10 selected the **genre-content** scorer. The table below report
 | Item cosine kNN | 0.3854 (0.3223–0.4492) | 0.5679 | 0.2170 | 0.6429 |
 | Implicit ALS | 0.1741 (0.1297–0.2111) | 0.3333 | 0.0717 | 0.1905 |
 | BPR | 0.3598 (0.2957–0.4282) | 0.5438 | 0.1996 | 0.5714 |
-| Genre content | **0.4026 (0.3446–0.4662)** | **0.5971** | 0.2169 | **0.6905** |
+| Genre content | **0.4026 (0.3446–0.4662)** | 0.5971 | 0.2169 | 0.6905 |
+| Description TF-IDF | 0.3979 (0.3424–0.4572) | **0.6143** | **0.2764** | **0.7857** |
 
-The cold-item NDCG difference between genre content and item kNN is negligible in this small synthetic slice; the measured recall difference alone does not prove a robust improvement. ALS is weak under the current fixed settings and was not tuned. The JSON report also contains MAP, hit rate, coverage, novelty and @20 values. No Steam, text-embedding, two-tower, LambdaRank or FAISS result exists yet.
+The validation-selected text model did **not** have the highest overall test NDCG: genre content was 0.4026 versus text 0.3979. Text's observed cold-item NDCG was 0.2764 versus genre content's 0.2169, but the cold slice has only 21 users and the generated descriptions largely repeat genre labels; this is a development-fixture result, not proof of cold-start gain on real games. ALS is weak under the current fixed settings and was not tuned. The JSON report also contains MAP, hit rate, coverage, novelty and @20 values. No Steam, learned text encoder, two-tower, LambdaRank or FAISS result exists yet.
 
 ## Local serving
 
-The FastAPI `TestClient` test passed for owned-item exclusion, a declared-genre unknown-user fallback, five unique returned items, and invalid-method rejection. A separate loopback server benchmark warmed model loading and then sent open-loop requests for five seconds at each rate:
+The FastAPI `TestClient` test passed for owned-item exclusion with the text method, a declared-genre unknown-user fallback, five unique returned items, and invalid-method rejection. A separate loopback server benchmark warmed model loading and then sent open-loop requests for five seconds at each rate:
 
 | Target rate | Requests | Achieved rate | Errors | p50 | p95 | p99 |
 |---:|---:|---:|---:|---:|---:|---:|
@@ -38,4 +39,4 @@ These are one short local run each, with a tiny 80-item catalog and no Redis/net
 - CUPED on a 2,000-row correlated synthetic fixture reduced outcome variance by **35.86%** (theta 0.7576). This is a unit fixture, not measured variance reduction in an experiment.
 - In 500 seeded null simulations with ten daily uncorrected looks, the fixed-horizon false-positive fraction was **7.4%** and the fraction with any daily p < 0.05 was **22.6%**. Monte Carlo noise applies, but this illustrates the peeking problem.
 
-`OPENBLAS_NUM_THREADS=1 .venv/bin/python -m pytest -q` passed **8 tests**, including a deliberate temporal-leakage failure, owned-item exclusion, API behavior, SRM, bootstrap inference and CUPED variance reduction. The historical prototype tests remain included. No real Cookie Cats CSV was used because the inspected data card lists its licence as unknown.
+`make all` passed **9 tests** and reran the seeded ranking and experiment reports. The suite includes a deliberate temporal-leakage failure, a same-genre text discrimination fixture, owned-item exclusion, API behavior, SRM, bootstrap inference and CUPED variance reduction. The historical prototype tests remain included. No real Cookie Cats CSV was used because the inspected data card lists its licence as unknown.

@@ -15,7 +15,7 @@ def run(seed: int, output: Path) -> dict:
     rows, catalog = synthetic(seed)
     train, validation, test = temporal_split(clean(rows))
     models = Recommenders(train, catalog, seed)
-    methods = ("popularity", "itemknn", "als", "bpr", "content")
+    methods = ("popularity", "itemknn", "als", "bpr", "content", "text")
     validation_scores = [evaluate(models, validation, method, 10, bootstrap_samples=200)
                          for method in methods]
     # Select on validation, then report untouched test results for every method.
