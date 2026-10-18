@@ -28,7 +28,7 @@ def health():
 @app.get("/recommend")
 def recommend(user_id: str, k: int = Query(10, ge=1, le=20), method: str = "itemknn",
               genres: str = ""):
-    if method not in {"popularity", "itemknn", "als", "bpr", "content"}:
+    if method not in {"popularity", "itemknn", "als", "bpr", "content", "text"}:
         raise HTTPException(400, "unknown recommender method")
     preferred = {genre.strip().lower() for genre in genres.split(",") if genre.strip()}
     if preferred - set(GENRES):

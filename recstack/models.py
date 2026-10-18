@@ -1,4 +1,4 @@
-"""Popularity, item cosine, implicit ALS/BPR, and a content-only cold baseline."""
+"""Popularity, item cosine, implicit ALS/BPR, and content baselines."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ import numpy as np
 from implicit.als import AlternatingLeastSquares
 from implicit.bpr import BayesianPersonalizedRanking
 from scipy.sparse import csr_matrix
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 from recstack.data import Interaction, Item
 
@@ -40,6 +41,11 @@ class Recommenders:
                                  shape=(len(self.user_ids), len(self.item_ids)),
                                  dtype=np.float32)
         self.popularity = popularity
+        # Item copy is available without interaction labels. Profiles use only
+        # the user's training-history confidence; validation/test plays are unseen.
+        self.text_features = TfidfVectorizer(stop_words="english").fit_transform(
+            item.description for item in catalog
+        ).astype(np.float32)
         gram = (self.matrix.T @ self.matrix).toarray()
         lengths = np.sqrt(np.diag(gram))
         denominator = np.outer(lengths, lengths)
@@ -70,6 +76,9 @@ class Recommenders:
             favourite = Counter(self.genre[item] for item in self.history[user])
             return np.array([favourite[self.genre[item]] + 0.001 * self.popularity[i]
                              for i, item in enumerate(self.item_ids)])
+        if method == "text":
+            profile = self.matrix[user_id] @ self.text_features
+            return np.asarray((self.text_features @ profile.T).toarray()).ravel()
         raise ValueError(f"unknown model {method}")
 
     def recommend(self, user: str, method: str, k: int = 10) -> list[str]:

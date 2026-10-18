@@ -11,6 +11,13 @@ def test_api_excludes_owned_and_cold_user_uses_genre_fallback():
     items = [item["item_id"] for item in known.json()["items"]]
     assert not set(items).intersection(trained_models().history["u015"])
     assert len(items) == 10
+    text = client.get("/recommend", params={"user_id": "u015", "k": 10,
+                                            "method": "text"})
+    assert text.status_code == 200
+    assert text.json()["method"] == "text"
+    assert not {item["item_id"] for item in text.json()["items"]}.intersection(
+        trained_models().history["u015"]
+    )
     new = client.get("/recommend", params={"user_id": "new-user", "k": 5,
                                                 "genres": "racing"})
     assert new.status_code == 200

@@ -33,7 +33,7 @@ def test_models_exclude_owned_and_evaluation_has_a_valid_denominator():
     models = Recommenders(train, catalog, seed=7)
     user = train[0].user
     owned = models.history[user]
-    for method in ("popularity", "itemknn", "als", "bpr", "content"):
+    for method in ("popularity", "itemknn", "als", "bpr", "content", "text"):
         ranked = models.recommend(user, method, 10)
         assert not owned.intersection(ranked)
         assert len(set(ranked)) == len(ranked)
@@ -41,3 +41,18 @@ def test_models_exclude_owned_and_evaluation_has_a_valid_denominator():
         assert result["users"] > 0
         assert 0 <= result["metrics"]["recall"] <= 1
         assert result["ci95"]["ndcg"][0] <= result["ci95"]["ndcg"][1]
+
+
+def test_text_model_uses_descriptions_for_unseen_same_genre_items():
+    from recstack.data import Item
+
+    catalog = [
+        Item("played", "strategy", "orbital colony management"),
+        Item("similar", "strategy", "space colony management"),
+        Item("different", "strategy", "tactical knight battles"),
+    ]
+    train = [Interaction("u", "played", 1, 30)]
+    models = Recommenders(train, catalog, seed=7)
+    scores = models.scores("u", "text")
+    assert scores[models.item_index["similar"]] > scores[models.item_index["different"]]
+    assert models.recommend("u", "text", 2)[0] == "similar"
