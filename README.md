@@ -6,6 +6,19 @@ A small recommendation lab for the awkward period when a game is new and collabo
 
 New games need a sensible ranking before there is enough interaction history for collaborative filtering. I wanted to see whether catalog copy could help that case without pretending that a synthetic hit proxy is a live click. The evaluation reports low-count items separately and keeps model selection on validation data.
 
+## Milestones
+
+| Plan milestone | Where it stands |
+|---|---|
+| M1–M2: data and ranking baselines | A 3,000-interaction seed-7 fixture is split by each user's time; six methods are evaluated with validation-only selection. |
+| M3: deep and content models | Genre and description TF-IDF baselines run. Text reached 0.2764 cold-item NDCG@10 versus 0.2169 for genre on 21 synthetic users. Learned deep models remain open. |
+| M4: serving | The local API filters owned games and handles an unknown user with declared genres. |
+| M5: benchmarking and iteration | A five-second localhost run handled 1,000 requests at about 200/s with zero HTTP errors. The iteration log records feature decisions; no LLM-suggested feature was used. |
+| M6: A/B toolkit | Assignment, SRM, CUPED and repeated-peeking calculations run on simulated data. The offline hit proxy is not a live product result. |
+| M7: pipeline and monitoring | A production pipeline and monitoring loop remain open. |
+
+The next useful comparison needs data with clear rights, real event times and richer game descriptions. A live experiment also needs logged exposures and predeclared success and safety metrics. [RESULTS.md](RESULTS.md) has denominators and limitations.
+
 ## What has run
 
 - The seed-7 fixture contains 120 fictional users, 80 games, and 3,000 interactions. Every user's later plays are held out.
