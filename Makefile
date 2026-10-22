@@ -1,8 +1,8 @@
 PYTHON := .venv/bin/python
 export OPENBLAS_NUM_THREADS := 1
 
-.PHONY: all test data eval experiment serve bench
-all: test eval experiment
+.PHONY: all test data eval experiment serve bench manifest manifest-check
+all: test manifest-check eval experiment
 
 test:
 	$(PYTHON) -m pytest -q
@@ -12,6 +12,14 @@ data:
 
 eval:
 	$(PYTHON) -m recstack.run --seed 7
+
+manifest:
+	$(PYTHON) -m recstack.manifest --seed 7 --protocol per_user
+	$(PYTHON) -m recstack.manifest --seed 7 --protocol global
+
+manifest-check:
+	$(PYTHON) -m recstack.manifest --seed 7 --protocol per_user --check
+	$(PYTHON) -m recstack.manifest --seed 7 --protocol global --check
 
 experiment:
 	$(PYTHON) -m recstack.experiment_run
