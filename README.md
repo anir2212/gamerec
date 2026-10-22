@@ -10,14 +10,14 @@ New games need a sensible ranking before there is enough interaction history for
 
 | Plan milestone | Where it stands |
 |---|---|
-| M1–M2: data and ranking baselines | A 3,000-interaction seed-7 fixture is split by each user's time; six methods are evaluated with validation-only selection. |
+| M1–M2: data and ranking baselines | A 3,000-interaction seed-7 fixture is split by each user's time; six methods are evaluated with validation-only selection. A dataset contract rejects untimed or malformed rows before any temporal claim, and committed split manifests record cut-offs, counts, row hashes and leakage checks. |
 | M3: deep and content models | Genre and description TF-IDF baselines run. Text reached 0.2764 cold-item NDCG@10 versus 0.2169 for genre on 21 synthetic users. Learned deep models remain open. |
 | M4: serving | The local API filters owned games and handles an unknown user with declared genres. |
 | M5: benchmarking and iteration | A five-second localhost run handled 1,000 requests at about 200/s with zero HTTP errors. The iteration log records feature decisions; no LLM-suggested feature was used. |
 | M6: A/B toolkit | Assignment, SRM, CUPED and repeated-peeking calculations run on simulated data. The offline hit proxy is not a live product result. |
 | M7: pipeline and monitoring | A production pipeline and monitoring loop remain open. |
 
-The next useful comparison needs data with clear rights, real event times and richer game descriptions. A live experiment also needs logged exposures and predeclared success and safety metrics. [RESULTS.md](RESULTS.md) has denominators and limitations.
+The next useful comparison needs data with clear rights, real event times and richer game descriptions. A 20 October audit of candidate real sources is in [data/SOURCES.md](data/SOURCES.md): the CC0-labelled Kaggle Steam set has descriptions, but the meaning of its date column and its 2.2 GB size need a decision first, and the UCSD Steam pages state no reuse licence. Nothing was downloaded. A live experiment also needs logged exposures and predeclared success and safety metrics. [RESULTS.md](RESULTS.md) has denominators and limitations.
 
 ## What has run
 
@@ -38,7 +38,7 @@ make all
 make serve
 ```
 
-`make all` runs tests, writes `runs/synthetic_baselines.json`, and writes `runs/experiment_baseline.json`. To try the text method after `make serve` starts, request `http://127.0.0.1:18081/recommend?user_id=u015&k=10&method=text`. The API trains the small seeded model on its first request. [Results](RESULTS.md) gives denominators and limitations; [Experiments](EXPERIMENTS.md) records the changes and decisions.
+`make all` runs tests, checks that `data/manifests/*.json` match a fresh computation, writes `runs/synthetic_baselines.json`, and writes `runs/experiment_baseline.json`. `make manifest` rewrites the manifests after an intended change. To try the text method after `make serve` starts, request `http://127.0.0.1:18081/recommend?user_id=u015&k=10&method=text`. The API trains the small seeded model on its first request. [Results](RESULTS.md) gives denominators and limitations; [Experiments](EXPERIMENTS.md) records the changes and decisions.
 
 ## Repository map
 

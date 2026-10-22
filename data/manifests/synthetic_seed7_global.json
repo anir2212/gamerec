@@ -1,0 +1,81 @@
+{
+  "catalog": {
+    "items": 80,
+    "sha256": "9fcfd76fcbbdf3690adef75eb76cc40236d4454d3e8a3cfc684c07d66dfa0777"
+  },
+  "cold_counts": {
+    "catalog_items_at_most_5_train": 24
+  },
+  "command": "python -m recstack.manifest --seed 7 --protocol global",
+  "contract": {
+    "licence_status": "generated in this repository; no third-party rights",
+    "name": "gamerec-synthetic-v1",
+    "required_columns": {
+      "item": "str",
+      "minutes": "int",
+      "time": "int",
+      "user": "str"
+    },
+    "source": "recstack.data.synthetic (fictional users and games)",
+    "supports_temporal_claim": true,
+    "time_semantics": "synthetic_ordinal",
+    "time_unit": "ordinal: event_index * 1000 + user_index",
+    "weight_meaning": "generated minutes for that one event"
+  },
+  "contract_sha256": "e70e98d36e818e3dbef4fbcf697111824d5bac777329b9159814feea37c4d8ad",
+  "cutoffs": {
+    "kind": "global",
+    "test_cutoff": 21066,
+    "validation_cutoff": 15110
+  },
+  "dataset": "seeded synthetic fixture, seed 7",
+  "input": {
+    "cap_minutes": 1000,
+    "rows_after_clean": 3000,
+    "rows_dropped_nonpositive_minutes": 0,
+    "rows_validated": 3000,
+    "sha256_after_clean": "182dbd0345d49ca02d2c1f81fc78f061dbf7eb79a10edd779c89ff5528cd053a"
+  },
+  "leakage_checks": {
+    "exact_partition": "pass",
+    "no_row_in_two_splits": "pass",
+    "temporal_order": "pass",
+    "test_items_unseen_in_train": 0,
+    "test_rows_already_owned_in_train": 410,
+    "test_users_without_train": 0,
+    "validation_users_without_train": 0
+  },
+  "manifest_version": 1,
+  "protocol": {
+    "name": "global",
+    "test_fraction": 0.2,
+    "tie_policy": "rows with time >= cut-off go to the later split, so equal times never straddle a boundary",
+    "validation_fraction": 0.2
+  },
+  "splits": {
+    "test": {
+      "items": 71,
+      "rows": 600,
+      "sha256": "c68fbb1193eb720fc8d74b68d93d7c929faa8efc677063242eabd998f0596bd1",
+      "time_max": 33117,
+      "time_min": 21066,
+      "users": 92
+    },
+    "train": {
+      "items": 80,
+      "rows": 1800,
+      "sha256": "b838de375f07165a2938561f0d849a3558a30ac39d0604b1e80661185b58e154",
+      "time_max": 15109,
+      "time_min": 0,
+      "users": 120
+    },
+    "validation": {
+      "items": 72,
+      "rows": 600,
+      "sha256": "8485ff42d259b2832521fe4182e86536cc3366371d1594de667a723f305dc0a4",
+      "time_max": 21065,
+      "time_min": 15110,
+      "users": 110
+    }
+  }
+}

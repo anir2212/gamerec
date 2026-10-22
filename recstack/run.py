@@ -6,13 +6,16 @@ import argparse
 import json
 from pathlib import Path
 
-from recstack.data import clean, split_stats, synthetic, temporal_split
+from recstack.contract import SYNTHETIC_CONTRACT, rows_digest, validate_records
+from recstack.data import clean, split_stats, synthetic, temporal_split, to_records
 from recstack.eval import evaluate
 from recstack.models import Recommenders
 
 
 def run(seed: int, output: Path) -> dict:
     rows, catalog = synthetic(seed)
+    # The contract rejects untimed or malformed rows before a temporal claim.
+    rows = validate_records(to_records(rows), SYNTHETIC_CONTRACT, temporal_claim=True, catalog=catalog)
     train, validation, test = temporal_split(clean(rows))
     models = Recommenders(train, catalog, seed)
     methods = ("popularity", "itemknn", "als", "bpr", "content", "text")
@@ -25,6 +28,9 @@ def run(seed: int, output: Path) -> dict:
                    for subset in ("all", "new_user", "cold_item")]
     report = {"dataset": "seeded synthetic only", "seed": seed,
               "split": split_stats(train, validation, test, catalog),
+              "contract_sha256": SYNTHETIC_CONTRACT.digest(),
+              "split_sha256": {"train": rows_digest(train), "validation": rows_digest(validation),
+                               "test": rows_digest(test)},
               "validation_selection_metric": "ndcg@10", "validation_winner": best,
               "validation": validation_scores, "test": test_scores}
     output.parent.mkdir(parents=True, exist_ok=True)

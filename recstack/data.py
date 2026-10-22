@@ -92,6 +92,50 @@ def assert_no_temporal_leakage(train, validation, test):
             raise ValueError(f"temporal leakage for {user}")
 
 
+def global_cutoffs(rows: list[Interaction], test_fraction: float = 0.2,
+                   validation_fraction: float = 0.2) -> tuple[int, int]:
+    """Choose calendar cut-offs from the sorted event times of all rows.
+
+    Rows at or after ``test_cutoff`` are test rows and rows at or after
+    ``validation_cutoff`` (but before the test cut-off) are validation rows, so
+    equal timestamps never straddle a boundary.
+    """
+    if not 0 < test_fraction < 1 or not 0 < validation_fraction < 1 or test_fraction + validation_fraction >= 1:
+        raise ValueError("invalid split fractions")
+    times = sorted(row.time for row in rows)
+    if len(times) < 3:
+        raise ValueError("need at least three interactions")
+    validation_cutoff = times[int(len(times) * (1 - test_fraction - validation_fraction))]
+    test_cutoff = times[int(len(times) * (1 - test_fraction))]
+    if not times[0] < validation_cutoff < test_cutoff:
+        raise ValueError("timestamps are too coarse for distinct global cut-offs")
+    return validation_cutoff, test_cutoff
+
+
+def global_temporal_split(rows: list[Interaction], validation_cutoff: int, test_cutoff: int):
+    """Split every user at the same calendar cut-offs (train < val cut-off <= validation < test cut-off <= test)."""
+    if validation_cutoff >= test_cutoff:
+        raise ValueError("validation cut-off must precede test cut-off")
+    ordered = sorted(rows, key=lambda x: (x.time, x.user, x.item))
+    train = [row for row in ordered if row.time < validation_cutoff]
+    validation = [row for row in ordered if validation_cutoff <= row.time < test_cutoff]
+    test = [row for row in ordered if row.time >= test_cutoff]
+    if not train or not validation or not test:
+        raise ValueError("global cut-offs leave an empty split")
+    assert_global_cutoffs(train, validation, test, validation_cutoff, test_cutoff)
+    return train, validation, test
+
+
+def assert_global_cutoffs(train, validation, test, validation_cutoff: int, test_cutoff: int):
+    """Fail if any row sits on the wrong side of a global cut-off."""
+    if any(row.time >= validation_cutoff for row in train):
+        raise ValueError("temporal leakage: training row at or after validation cut-off")
+    if any(not validation_cutoff <= row.time < test_cutoff for row in validation):
+        raise ValueError("temporal leakage: validation row outside its window")
+    if any(row.time < test_cutoff for row in test):
+        raise ValueError("temporal leakage: test row before test cut-off")
+
+
 def split_stats(train, validation, test, catalog):
     counts = Counter(row.item for row in train)
     by_user = Counter(row.user for row in train)

@@ -1,6 +1,6 @@
 # GameRec measured results
 
-All numbers on this page come from the **seed-7 synthetic corpus** and local scripts. They are development measurements, not claims about real players. `runs/` contains the generated JSON files and is ignored by Git; the commands in the README recreate them.
+All numbers on this page come from the **seed-7 synthetic corpus** and local scripts. They are development measurements, not claims about real players. `runs/` contains the generated JSON files and is ignored by Git; the commands in the README recreate them. The split manifests in `data/manifests/` are committed evidence.
 
 ## Data and offline ranking
 
@@ -18,6 +18,17 @@ With the added TF-IDF description baseline, validation NDCG@10 selected **text**
 | Description TF-IDF | 0.3979 (0.3424–0.4572) | **0.6143** | **0.2764** | **0.7857** |
 
 The validation-selected text model did **not** have the highest overall test NDCG: genre content was 0.4026 versus text 0.3979. Text's observed cold-item NDCG was 0.2764 versus genre content's 0.2169, but the cold slice has only 21 users and the generated descriptions largely repeat genre labels; this is a development-fixture result, not proof of cold-start gain on real games. ALS is weak under the current fixed settings and was not tuned. The JSON report also contains MAP, hit rate, coverage, novelty and @20 values. No Steam, learned text encoder, two-tower, LambdaRank or FAISS result exists yet.
+
+## Dataset contract and split manifests (synthetic, 20 October 2026)
+
+`make manifest` wrote the two committed files [`data/manifests/synthetic_seed7_per_user.json`](data/manifests/synthetic_seed7_per_user.json) and [`data/manifests/synthetic_seed7_global.json`](data/manifests/synthetic_seed7_global.json). `make all` now recomputes them and fails on any difference. Both use the seed-7 fixture under `SYNTHETIC_CONTRACT` (`time_semantics = synthetic_ordinal`). All 3,000 rows passed validation and none were dropped by cleaning.
+
+| Protocol | Cut-offs | Train / validation / test rows | Users in test | Disclosed overlaps |
+|---|---|---:|---:|---|
+| `per_user` (used for every ranking result above) | each user's last 20% is test and the 20% before it is validation; boundaries hashed per user | 1,808 / 596 / 596 | 120 | 100 test rows are earlier than the latest training event of some *other* user; 410 test rows repeat a game the user already owns in training |
+| `global` (prepared for real data; not used to train or score models) | validation from time 15,110, test from time 21,066 | 1,800 / 600 / 600 | 92 | 0 users without training history; 410 test rows repeat an owned game |
+
+The leakage checks passed for both protocols: time order under the protocol's rule, no row in two splits, and an exact partition of the validated input. The per-user split hashes in the manifest equal the `split_sha256` values that `recstack.run` now writes into `runs/synthetic_baselines.json`. This confirms that the ranking table above used exactly the manifest's rows. The cross-user overlap is a property of the per-user protocol and is now stated rather than hidden. The ranking and experiment numbers did not change in this checkpoint. These are fixture properties, not a real-data result: no real records were imported (see [data/SOURCES.md](data/SOURCES.md)).
 
 ## Local serving
 
@@ -39,4 +50,4 @@ These are one short local run each, with a tiny 80-item catalog and no Redis/net
 - CUPED on a 2,000-row correlated synthetic fixture reduced outcome variance by **35.86%** (theta 0.7576). This is a unit fixture, not measured variance reduction in an experiment.
 - In 500 seeded null simulations with ten daily uncorrected looks, the fixed-horizon false-positive fraction was **7.4%** and the fraction with any daily p < 0.05 was **22.6%**. Monte Carlo noise applies, but this illustrates the peeking problem.
 
-`make all` passed **9 tests** and reran the seeded ranking and experiment reports. The suite includes a deliberate temporal-leakage failure, a same-genre text discrimination fixture, owned-item exclusion, API behavior, SRM, bootstrap inference and CUPED variance reduction. The historical prototype tests remain included. No real Cookie Cats CSV was used because the inspected data card lists its licence as unknown.
+On 20 October 2026, `make all` passed **31 tests** (9 before this checkpoint), checked both saved split manifests, and reran the seeded ranking and experiment reports. The ranking and experiment values above were unchanged. The suite includes contract rejection of untimed, mistyped, duplicate and unknown-catalog rows; rejection of temporal claims for `snapshot`/`none` sources; manifest determinism and drift detection; global cut-off and tie rules; corrupted-split leakage failures; a deliberate temporal-leakage failure, a same-genre text discrimination fixture, owned-item exclusion, API behavior, SRM, bootstrap inference and CUPED variance reduction. The historical prototype tests remain included. No real Cookie Cats CSV was used because the inspected data card lists its licence as unknown. No Steam or Kaggle record was downloaded or used.
