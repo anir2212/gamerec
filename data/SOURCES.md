@@ -6,6 +6,10 @@
 
 Its contract is `SYNTHETIC_CONTRACT` in `recstack/contract.py`. The timestamp meaning is `synthetic_ordinal`: `event_index * 1000 + user_index`, a generated order rather than a clock time. The split manifests for this fixture are saved in [`data/manifests/`](manifests/). `make all` recomputes them and fails if they differ.
 
+The corpus has **no tags, price, release date or user segment**, and its descriptions are a template ("A strategy game with variant 17"). The M3 models declare what they substitute for those fields in [`docs/M3_PROTOCOL.md`](../docs/M3_PROTOCOL.md). After bare numbers are removed, description vectors carry only genre.
+
+The M7 monitors also use **simulated weeks** from `recstack/monitor_run.py`. They continue the same generator, with and without authored drift, and contain no real rows. No real record was downloaded for M3 or M7 (6 November 2026).
+
 ## Dataset contract for any future source
 
 Before any real record is imported, a source needs a `DatasetContract` that states:
@@ -36,7 +40,7 @@ Pages accessed on 20 October 2026: the [dataset page](https://www.kaggle.com/dat
 
 **Verdict: conditionally usable for a private portfolio experiment, not yet approved.** It is the best candidate inspected because it has an explicit licence label, item descriptions and tags, and a dated interaction table. It was **not downloaded**: it is over 100 MB, it needs Kaggle credentials, and the host had about 7 GiB free disk.
 
-**Planned mapping (not implemented, no data loaded):** `user_id → user`, `app_id → item`, `date → time` (days since epoch, `review_publication`, only after a sample confirms it), and `hours → minutes` (cumulative weight). A run must use the `global` cut-off protocol or a predeclared tie rule, because the `per_user` split rejects equal timestamps across a boundary.
+**Planned mapping (not implemented, no data loaded):** `user_id → user`, `app_id → item`, `date → time` (days since epoch, `review_publication`, only after a sample confirms it), and `hours → minutes` (cumulative weight). A run must use the `global` cut-off protocol or a predeclared **timestamp** tie rule, because the `per_user` split rejects equal timestamps across a boundary. That is a different tie from the **score** tie rule in [`docs/TIEBREAK_PROTOCOL.md`](../docs/TIEBREAK_PROTOCOL.md), which orders items whose model scores are exactly equal; a real-data run needs both declared.
 
 **Still to decide (project owner):** (1) whether to accept the uploader's CC0 label despite the Steam origin; (2) whether to create a Kaggle token and download about 2.2 GB, or only `games.csv`, `games_metadata.json` and a subset; (3) whether negative recommendations (`is_recommended = false`) count as interactions or as negative labels; (4) how to confirm the `date` meaning from a sample before any temporal claim.
 

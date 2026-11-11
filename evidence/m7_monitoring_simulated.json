@@ -1,0 +1,1555 @@
+{
+  "label": "SIMULATED WEEKS on the seed-7 synthetic fixture; authored drift, no real traffic or exposure log",
+  "champion_version": "v0002",
+  "corpus_seed": 7,
+  "simulation_seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "weeks": 8,
+  "test_split_read": false,
+  "scenarios": {
+    "no_drift": {
+      "per_seed": {
+        "101": [
+          {
+            "events": 260,
+            "active_users": 100,
+            "recall_users": 57,
+            "popularity_psi": 0.513109410854742,
+            "popularity_js_bits": 0.06892297745775561,
+            "served_score_psi": 0.0015510493502302117,
+            "played_score_psi": 0.031185367741129733,
+            "recall_at_10": 0.5877192982456141,
+            "recall_ci95": [
+              0.47953216374269003,
+              0.7076023391812866
+            ]
+          },
+          {
+            "events": 269,
+            "active_users": 104,
+            "recall_users": 64,
+            "popularity_psi": 0.4969416043044589,
+            "popularity_js_bits": 0.06929389874006447,
+            "served_score_psi": 0.0026753598573892087,
+            "played_score_psi": 0.021453019104336803,
+            "recall_at_10": 0.6002604166666666,
+            "recall_ci95": [
+              0.50390625,
+              0.703125
+            ]
+          },
+          {
+            "events": 242,
+            "active_users": 94,
+            "recall_users": 62,
+            "popularity_psi": 0.5081030341674099,
+            "popularity_js_bits": 0.07117089286745683,
+            "served_score_psi": 0.007990693784562417,
+            "played_score_psi": 0.01357840693942055,
+            "recall_at_10": 0.5940860215053764,
+            "recall_ci95": [
+              0.478494623655914,
+              0.6989247311827957
+            ]
+          },
+          {
+            "events": 219,
+            "active_users": 84,
+            "recall_users": 59,
+            "popularity_psi": 0.5782573025894975,
+            "popularity_js_bits": 0.0795817400590702,
+            "served_score_psi": 0.0068434630203232484,
+            "played_score_psi": 0.04670126136116703,
+            "recall_at_10": 0.6412429378531074,
+            "recall_ci95": [
+              0.5282485875706215,
+              0.7598870056497176
+            ]
+          },
+          {
+            "events": 231,
+            "active_users": 91,
+            "recall_users": 62,
+            "popularity_psi": 0.5986044895842093,
+            "popularity_js_bits": 0.0834251788391908,
+            "served_score_psi": 0.0038876255041087483,
+            "played_score_psi": 0.030059623607412846,
+            "recall_at_10": 0.5161290322580645,
+            "recall_ci95": [
+              0.3817204301075269,
+              0.6397849462365591
+            ]
+          },
+          {
+            "events": 222,
+            "active_users": 101,
+            "recall_users": 63,
+            "popularity_psi": 0.5700586860760957,
+            "popularity_js_bits": 0.07953269910681962,
+            "served_score_psi": 0.003010591876155511,
+            "played_score_psi": 0.050702586588110735,
+            "recall_at_10": 0.5317460317460317,
+            "recall_ci95": [
+              0.40740740740740744,
+              0.6402116402116402
+            ]
+          },
+          {
+            "events": 238,
+            "active_users": 99,
+            "recall_users": 67,
+            "popularity_psi": 0.4472034634926122,
+            "popularity_js_bits": 0.06460051063920186,
+            "served_score_psi": 0.002843696746831084,
+            "played_score_psi": 0.03826093755334098,
+            "recall_at_10": 0.5870646766169154,
+            "recall_ci95": [
+              0.47761194029850745,
+              0.6840796019900498
+            ]
+          },
+          {
+            "events": 249,
+            "active_users": 98,
+            "recall_users": 66,
+            "popularity_psi": 0.44275340541363895,
+            "popularity_js_bits": 0.06529062119804875,
+            "served_score_psi": 0.0024786446777661075,
+            "played_score_psi": 0.0281803716556217,
+            "recall_at_10": 0.6111111111111112,
+            "recall_ci95": [
+              0.5151515151515151,
+              0.7196969696969697
+            ]
+          }
+        ],
+        "102": [
+          {
+            "events": 228,
+            "active_users": 92,
+            "recall_users": 59,
+            "popularity_psi": 0.4625612196868983,
+            "popularity_js_bits": 0.06572956629804075,
+            "served_score_psi": 0.001581933093486181,
+            "played_score_psi": 0.02259171126356645,
+            "recall_at_10": 0.6412429378531074,
+            "recall_ci95": [
+              0.5225988700564972,
+              0.7457627118644068
+            ]
+          },
+          {
+            "events": 202,
+            "active_users": 82,
+            "recall_users": 52,
+            "popularity_psi": 0.5336998405898948,
+            "popularity_js_bits": 0.0696306617242517,
+            "served_score_psi": 0.003196863952516111,
+            "played_score_psi": 0.05013931903144229,
+            "recall_at_10": 0.625,
+            "recall_ci95": [
+              0.5096153846153846,
+              0.7339743589743589
+            ]
+          },
+          {
+            "events": 265,
+            "active_users": 97,
+            "recall_users": 61,
+            "popularity_psi": 0.3913655421055062,
+            "popularity_js_bits": 0.05536133934691274,
+            "served_score_psi": 0.001488891096454428,
+            "played_score_psi": 0.05571290466690104,
+            "recall_at_10": 0.6038251366120219,
+            "recall_ci95": [
+              0.5,
+              0.7049180327868853
+            ]
+          },
+          {
+            "events": 239,
+            "active_users": 100,
+            "recall_users": 61,
+            "popularity_psi": 0.46714217024814186,
+            "popularity_js_bits": 0.06546523408429561,
+            "served_score_psi": 0.005486058268788026,
+            "played_score_psi": 0.02451087263990704,
+            "recall_at_10": 0.5901639344262295,
+            "recall_ci95": [
+              0.4808743169398907,
+              0.7021857923497268
+            ]
+          },
+          {
+            "events": 242,
+            "active_users": 94,
+            "recall_users": 62,
+            "popularity_psi": 0.5644451286351829,
+            "popularity_js_bits": 0.07624151386996669,
+            "served_score_psi": 0.0008666919435524462,
+            "played_score_psi": 0.042375527150247796,
+            "recall_at_10": 0.6962365591397849,
+            "recall_ci95": [
+              0.5833333333333333,
+              0.8064516129032258
+            ]
+          },
+          {
+            "events": 255,
+            "active_users": 97,
+            "recall_users": 69,
+            "popularity_psi": 0.5487474646055919,
+            "popularity_js_bits": 0.07751948699242747,
+            "served_score_psi": 0.0013267779839716682,
+            "played_score_psi": 0.037748281136773476,
+            "recall_at_10": 0.5917874396135266,
+            "recall_ci95": [
+              0.49516908212560384,
+              0.6884057971014492
+            ]
+          },
+          {
+            "events": 236,
+            "active_users": 97,
+            "recall_users": 59,
+            "popularity_psi": 0.5436382020539001,
+            "popularity_js_bits": 0.07107477545737903,
+            "served_score_psi": 0.005576275071980854,
+            "played_score_psi": 0.02184649373431802,
+            "recall_at_10": 0.6596045197740112,
+            "recall_ci95": [
+              0.5550847457627118,
+              0.7655367231638418
+            ]
+          },
+          {
+            "events": 229,
+            "active_users": 96,
+            "recall_users": 64,
+            "popularity_psi": 0.44135819072648075,
+            "popularity_js_bits": 0.061985692173606034,
+            "served_score_psi": 0.0029788848296650452,
+            "played_score_psi": 0.018936897333683075,
+            "recall_at_10": 0.5182291666666666,
+            "recall_ci95": [
+              0.4140625,
+              0.6328125
+            ]
+          }
+        ],
+        "103": [
+          {
+            "events": 234,
+            "active_users": 95,
+            "recall_users": 60,
+            "popularity_psi": 0.5943625278700941,
+            "popularity_js_bits": 0.08362230081407779,
+            "served_score_psi": 0.002265092135599568,
+            "played_score_psi": 0.028535480555181958,
+            "recall_at_10": 0.65,
+            "recall_ci95": [
+              0.5416666666666666,
+              0.7555555555555556
+            ]
+          },
+          {
+            "events": 237,
+            "active_users": 97,
+            "recall_users": 56,
+            "popularity_psi": 0.4176878899991887,
+            "popularity_js_bits": 0.05380763132116059,
+            "served_score_psi": 0.0013505820165943332,
+            "played_score_psi": 0.04048580154064779,
+            "recall_at_10": 0.6398809523809524,
+            "recall_ci95": [
+              0.5327380952380952,
+              0.7529761904761905
+            ]
+          },
+          {
+            "events": 217,
+            "active_users": 85,
+            "recall_users": 52,
+            "popularity_psi": 0.4160709937925827,
+            "popularity_js_bits": 0.05978952336285315,
+            "served_score_psi": 0.0020499308215378266,
+            "played_score_psi": 0.050449992717745494,
+            "recall_at_10": 0.6121794871794871,
+            "recall_ci95": [
+              0.5032051282051282,
+              0.7275641025641026
+            ]
+          },
+          {
+            "events": 249,
+            "active_users": 98,
+            "recall_users": 58,
+            "popularity_psi": 0.4991394342968141,
+            "popularity_js_bits": 0.06702806527162841,
+            "served_score_psi": 0.0024820472723082305,
+            "played_score_psi": 0.08187292216976959,
+            "recall_at_10": 0.6192528735632183,
+            "recall_ci95": [
+              0.5172413793103449,
+              0.7298850574712644
+            ]
+          },
+          {
+            "events": 246,
+            "active_users": 94,
+            "recall_users": 57,
+            "popularity_psi": 0.39016307377032594,
+            "popularity_js_bits": 0.0527665636737418,
+            "served_score_psi": 0.0020629881181926414,
+            "played_score_psi": 0.03922915008201608,
+            "recall_at_10": 0.6388888888888888,
+            "recall_ci95": [
+              0.5292397660818714,
+              0.7485380116959064
+            ]
+          },
+          {
+            "events": 264,
+            "active_users": 102,
+            "recall_users": 62,
+            "popularity_psi": 0.44894985980035323,
+            "popularity_js_bits": 0.06157063430341124,
+            "served_score_psi": 0.0013536928661462399,
+            "played_score_psi": 0.013873300333704269,
+            "recall_at_10": 0.5362903225806451,
+            "recall_ci95": [
+              0.41666666666666663,
+              0.6599462365591398
+            ]
+          },
+          {
+            "events": 256,
+            "active_users": 100,
+            "recall_users": 67,
+            "popularity_psi": 0.4030465421119327,
+            "popularity_js_bits": 0.06011327985364908,
+            "served_score_psi": 0.000963317575596152,
+            "played_score_psi": 0.035561815191056,
+            "recall_at_10": 0.5783582089552238,
+            "recall_ci95": [
+              0.472636815920398,
+              0.6840796019900498
+            ]
+          },
+          {
+            "events": 235,
+            "active_users": 96,
+            "recall_users": 60,
+            "popularity_psi": 0.6095795607076513,
+            "popularity_js_bits": 0.08061133381201538,
+            "served_score_psi": 0.0032444547339900345,
+            "played_score_psi": 0.040633862651900166,
+            "recall_at_10": 0.5194444444444445,
+            "recall_ci95": [
+              0.4,
+              0.625
+            ]
+          }
+        ],
+        "104": [
+          {
+            "events": 241,
+            "active_users": 104,
+            "recall_users": 66,
+            "popularity_psi": 0.5450092788263343,
+            "popularity_js_bits": 0.07232830992620368,
+            "served_score_psi": 0.0020608224551620386,
+            "played_score_psi": 0.018252694177182255,
+            "recall_at_10": 0.6464646464646464,
+            "recall_ci95": [
+              0.5353535353535354,
+              0.75
+            ]
+          },
+          {
+            "events": 228,
+            "active_users": 97,
+            "recall_users": 56,
+            "popularity_psi": 0.6025510053133453,
+            "popularity_js_bits": 0.07693639495513774,
+            "served_score_psi": 0.002992187728537596,
+            "played_score_psi": 0.032160052837087116,
+            "recall_at_10": 0.550595238095238,
+            "recall_ci95": [
+              0.4017857142857143,
+              0.6636904761904762
+            ]
+          },
+          {
+            "events": 250,
+            "active_users": 95,
+            "recall_users": 69,
+            "popularity_psi": 0.4195485717545274,
+            "popularity_js_bits": 0.0601143383792796,
+            "served_score_psi": 0.006091519581901917,
+            "played_score_psi": 0.03352175106747843,
+            "recall_at_10": 0.6316425120772947,
+            "recall_ci95": [
+              0.5277777777777778,
+              0.7379227053140096
+            ]
+          },
+          {
+            "events": 219,
+            "active_users": 91,
+            "recall_users": 55,
+            "popularity_psi": 0.6395645454620216,
+            "popularity_js_bits": 0.08953511978151127,
+            "served_score_psi": 0.002615025506097696,
+            "played_score_psi": 0.043120044359150796,
+            "recall_at_10": 0.6348484848484848,
+            "recall_ci95": [
+              0.5287878787878788,
+              0.7454545454545455
+            ]
+          },
+          {
+            "events": 238,
+            "active_users": 97,
+            "recall_users": 61,
+            "popularity_psi": 0.5352043246922931,
+            "popularity_js_bits": 0.0731374624517108,
+            "served_score_psi": 0.003363691468816766,
+            "played_score_psi": 0.06506869654626132,
+            "recall_at_10": 0.6693989071038252,
+            "recall_ci95": [
+              0.5683060109289617,
+              0.7595628415300547
+            ]
+          },
+          {
+            "events": 242,
+            "active_users": 95,
+            "recall_users": 61,
+            "popularity_psi": 0.4420390675418475,
+            "popularity_js_bits": 0.0620592765423324,
+            "served_score_psi": 0.001974222931089304,
+            "played_score_psi": 0.03470089139653028,
+            "recall_at_10": 0.6967213114754098,
+            "recall_ci95": [
+              0.5956284153005464,
+              0.7950819672131147
+            ]
+          },
+          {
+            "events": 236,
+            "active_users": 92,
+            "recall_users": 64,
+            "popularity_psi": 0.6323359088396572,
+            "popularity_js_bits": 0.0854393617040797,
+            "served_score_psi": 0.0034691302096922223,
+            "played_score_psi": 0.054243892127705993,
+            "recall_at_10": 0.65625,
+            "recall_ci95": [
+              0.5598958333333334,
+              0.7552083333333334
+            ]
+          },
+          {
+            "events": 247,
+            "active_users": 101,
+            "recall_users": 64,
+            "popularity_psi": 0.47045223045860696,
+            "popularity_js_bits": 0.06577088961346288,
+            "served_score_psi": 0.0014479298153145317,
+            "played_score_psi": 0.03517087645147312,
+            "recall_at_10": 0.6588541666666666,
+            "recall_ci95": [
+              0.5572916666666666,
+              0.7604166666666666
+            ]
+          }
+        ],
+        "105": [
+          {
+            "events": 251,
+            "active_users": 100,
+            "recall_users": 58,
+            "popularity_psi": 0.5570257340873939,
+            "popularity_js_bits": 0.07344670085673982,
+            "served_score_psi": 0.003870717738994632,
+            "played_score_psi": 0.04439917484937895,
+            "recall_at_10": 0.5660919540229885,
+            "recall_ci95": [
+              0.45114942528735635,
+              0.7025862068965517
+            ]
+          },
+          {
+            "events": 239,
+            "active_users": 95,
+            "recall_users": 54,
+            "popularity_psi": 0.48538709634607313,
+            "popularity_js_bits": 0.06635197317865227,
+            "served_score_psi": 0.0019322438601727292,
+            "played_score_psi": 0.046222992918429906,
+            "recall_at_10": 0.5987654320987654,
+            "recall_ci95": [
+              0.48456790123456794,
+              0.7006172839506173
+            ]
+          },
+          {
+            "events": 222,
+            "active_users": 88,
+            "recall_users": 60,
+            "popularity_psi": 0.5311495462031957,
+            "popularity_js_bits": 0.07466705863604925,
+            "served_score_psi": 0.002120563662206559,
+            "played_score_psi": 0.058853210227299356,
+            "recall_at_10": 0.4972222222222222,
+            "recall_ci95": [
+              0.3611111111111111,
+              0.6083333333333333
+            ]
+          },
+          {
+            "events": 252,
+            "active_users": 94,
+            "recall_users": 63,
+            "popularity_psi": 0.5332687637373921,
+            "popularity_js_bits": 0.07246468495668495,
+            "served_score_psi": 0.004658359460046164,
+            "played_score_psi": 0.022226373547238696,
+            "recall_at_10": 0.5687830687830688,
+            "recall_ci95": [
+              0.4497354497354497,
+              0.6798941798941799
+            ]
+          },
+          {
+            "events": 232,
+            "active_users": 99,
+            "recall_users": 62,
+            "popularity_psi": 0.6568261901496402,
+            "popularity_js_bits": 0.09227737679793763,
+            "served_score_psi": 0.0029425044463026223,
+            "played_score_psi": 0.028815739244577657,
+            "recall_at_10": 0.6129032258064516,
+            "recall_ci95": [
+              0.4946236559139785,
+              0.7231182795698925
+            ]
+          },
+          {
+            "events": 236,
+            "active_users": 97,
+            "recall_users": 66,
+            "popularity_psi": 0.6262666324909973,
+            "popularity_js_bits": 0.08377950381293718,
+            "served_score_psi": 0.0029879653061897246,
+            "played_score_psi": 0.053606377998079775,
+            "recall_at_10": 0.5858585858585859,
+            "recall_ci95": [
+              0.47474747474747475,
+              0.6994949494949495
+            ]
+          },
+          {
+            "events": 256,
+            "active_users": 98,
+            "recall_users": 61,
+            "popularity_psi": 0.5943210076250022,
+            "popularity_js_bits": 0.07909329969699297,
+            "served_score_psi": 0.0018778048462706801,
+            "played_score_psi": 0.019465261944652694,
+            "recall_at_10": 0.639344262295082,
+            "recall_ci95": [
+              0.5409836065573771,
+              0.7377049180327869
+            ]
+          },
+          {
+            "events": 243,
+            "active_users": 96,
+            "recall_users": 72,
+            "popularity_psi": 0.5378078168336778,
+            "popularity_js_bits": 0.07240671644024209,
+            "served_score_psi": 0.0021976753961613503,
+            "played_score_psi": 0.024338539439586474,
+            "recall_at_10": 0.6064814814814814,
+            "recall_ci95": [
+              0.5069444444444444,
+              0.7106481481481481
+            ]
+          }
+        ]
+      },
+      "weekly_mean": {
+        "popularity_psi": [
+          0.5344136342650925,
+          0.5072534873105922,
+          0.45324753760464437,
+          0.5434744432667734,
+          0.5490486413663302,
+          0.5272123421029772,
+          0.524109024824621,
+          0.5003902408280112
+        ],
+        "popularity_js_bits": [
+          0.07280997107056353,
+          0.06720411198385336,
+          0.06422063051851032,
+          0.0748149688306381,
+          0.07556961912650954,
+          0.07289232015158557,
+          0.07206424547026052,
+          0.06921305064747503
+        ],
+        "served_score_psi": [
+          0.002265922954694526,
+          0.0024294474830419957,
+          0.003948319789332629,
+          0.0044169907055126734,
+          0.002624700296194645,
+          0.0021306501927104895,
+          0.0029460448900741985,
+          0.002469517890579414
+        ],
+        "played_score_psi": [
+          0.02899288571728787,
+          0.03809223708638878,
+          0.042423253123768975,
+          0.04368629481544663,
+          0.04110974732610314,
+          0.038126287490639704,
+          0.03387568011021474,
+          0.029452109506452905
+        ],
+        "recall_at_10": [
+          0.6183037673172713,
+          0.6029004078483245,
+          0.5877910759192805,
+          0.6108582598948218,
+          0.626711322639403,
+          0.5884807382548398,
+          0.6241243335282465,
+          0.5828240740740741
+        ]
+      },
+      "weekly_min": {
+        "popularity_psi": [
+          0.4625612196868983,
+          0.4176878899991887,
+          0.3913655421055062,
+          0.46714217024814186,
+          0.39016307377032594,
+          0.4420390675418475,
+          0.4030465421119327,
+          0.44135819072648075
+        ],
+        "popularity_js_bits": [
+          0.06572956629804075,
+          0.05380763132116059,
+          0.05536133934691274,
+          0.06546523408429561,
+          0.0527665636737418,
+          0.06157063430341124,
+          0.06011327985364908,
+          0.061985692173606034
+        ],
+        "served_score_psi": [
+          0.0015510493502302117,
+          0.0013505820165943332,
+          0.001488891096454428,
+          0.0024820472723082305,
+          0.0008666919435524462,
+          0.0013267779839716682,
+          0.000963317575596152,
+          0.0014479298153145317
+        ],
+        "played_score_psi": [
+          0.018252694177182255,
+          0.021453019104336803,
+          0.01357840693942055,
+          0.022226373547238696,
+          0.028815739244577657,
+          0.013873300333704269,
+          0.019465261944652694,
+          0.018936897333683075
+        ],
+        "recall_at_10": [
+          0.5660919540229885,
+          0.550595238095238,
+          0.4972222222222222,
+          0.5687830687830688,
+          0.5161290322580645,
+          0.5317460317460317,
+          0.5783582089552238,
+          0.5182291666666666
+        ]
+      },
+      "weekly_max": {
+        "popularity_psi": [
+          0.5943625278700941,
+          0.6025510053133453,
+          0.5311495462031957,
+          0.6395645454620216,
+          0.6568261901496402,
+          0.6262666324909973,
+          0.6323359088396572,
+          0.6095795607076513
+        ],
+        "popularity_js_bits": [
+          0.08362230081407779,
+          0.07693639495513774,
+          0.07466705863604925,
+          0.08953511978151127,
+          0.09227737679793763,
+          0.08377950381293718,
+          0.0854393617040797,
+          0.08061133381201538
+        ],
+        "served_score_psi": [
+          0.003870717738994632,
+          0.003196863952516111,
+          0.007990693784562417,
+          0.0068434630203232484,
+          0.0038876255041087483,
+          0.003010591876155511,
+          0.005576275071980854,
+          0.0032444547339900345
+        ],
+        "played_score_psi": [
+          0.04439917484937895,
+          0.05013931903144229,
+          0.058853210227299356,
+          0.08187292216976959,
+          0.06506869654626132,
+          0.053606377998079775,
+          0.054243892127705993,
+          0.040633862651900166
+        ],
+        "recall_at_10": [
+          0.65,
+          0.6398809523809524,
+          0.6316425120772947,
+          0.6412429378531074,
+          0.6962365591397849,
+          0.6967213114754098,
+          0.6596045197740112,
+          0.6588541666666666
+        ]
+      }
+    },
+    "drift": {
+      "per_seed": {
+        "101": [
+          {
+            "events": 260,
+            "active_users": 100,
+            "recall_users": 65,
+            "popularity_psi": 0.6356482945526838,
+            "popularity_js_bits": 0.08879620725434849,
+            "served_score_psi": 0.0015510493502302117,
+            "played_score_psi": 0.0775338663954263,
+            "recall_at_10": 0.5269230769230769,
+            "recall_ci95": [
+              0.4230769230769231,
+              0.6217948717948718
+            ]
+          },
+          {
+            "events": 269,
+            "active_users": 104,
+            "recall_users": 85,
+            "popularity_psi": 0.7615524295181706,
+            "popularity_js_bits": 0.10977859287956618,
+            "served_score_psi": 0.0026753598573892087,
+            "played_score_psi": 0.18166834707300916,
+            "recall_at_10": 0.46176470588235297,
+            "recall_ci95": [
+              0.3696078431372549,
+              0.5627450980392157
+            ]
+          },
+          {
+            "events": 242,
+            "active_users": 94,
+            "recall_users": 75,
+            "popularity_psi": 0.9711405910117079,
+            "popularity_js_bits": 0.1284114383725732,
+            "served_score_psi": 0.007990693784562417,
+            "played_score_psi": 0.282061261483698,
+            "recall_at_10": 0.43111111111111117,
+            "recall_ci95": [
+              0.34,
+              0.5444444444444445
+            ]
+          },
+          {
+            "events": 219,
+            "active_users": 84,
+            "recall_users": 75,
+            "popularity_psi": 1.1533408316290732,
+            "popularity_js_bits": 0.15720180644069842,
+            "served_score_psi": 0.0068434630203232484,
+            "played_score_psi": 0.5675830800324584,
+            "recall_at_10": 0.4066666666666667,
+            "recall_ci95": [
+              0.31777777777777777,
+              0.5022222222222222
+            ]
+          },
+          {
+            "events": 231,
+            "active_users": 91,
+            "recall_users": 86,
+            "popularity_psi": 1.6187835516683562,
+            "popularity_js_bits": 0.2154382093859622,
+            "served_score_psi": 0.0038876255041087483,
+            "played_score_psi": 0.900658428051035,
+            "recall_at_10": 0.3430232558139535,
+            "recall_ci95": [
+              0.25290697674418605,
+              0.4273255813953488
+            ]
+          },
+          {
+            "events": 222,
+            "active_users": 101,
+            "recall_users": 92,
+            "popularity_psi": 2.0466628977801715,
+            "popularity_js_bits": 0.28311483412167815,
+            "served_score_psi": 0.003010591876155511,
+            "played_score_psi": 1.5562962472095891,
+            "recall_at_10": 0.30525362318840576,
+            "recall_ci95": [
+              0.22826086956521738,
+              0.38315217391304346
+            ]
+          },
+          {
+            "events": 238,
+            "active_users": 99,
+            "recall_users": 92,
+            "popularity_psi": 2.5300619218305687,
+            "popularity_js_bits": 0.32749551917813324,
+            "served_score_psi": 0.002843696746831084,
+            "played_score_psi": 1.991165520853595,
+            "recall_at_10": 0.19746376811594205,
+            "recall_ci95": [
+              0.13496376811594202,
+              0.259963768115942
+            ]
+          },
+          {
+            "events": 249,
+            "active_users": 98,
+            "recall_users": 94,
+            "popularity_psi": 2.4197263175246158,
+            "popularity_js_bits": 0.3159794350652284,
+            "served_score_psi": 0.0024786446777661075,
+            "played_score_psi": 2.0997917101278465,
+            "recall_at_10": 0.17287234042553193,
+            "recall_ci95": [
+              0.11790780141843972,
+              0.23758865248226949
+            ]
+          }
+        ],
+        "102": [
+          {
+            "events": 228,
+            "active_users": 92,
+            "recall_users": 65,
+            "popularity_psi": 0.581704018804349,
+            "popularity_js_bits": 0.08305466401111306,
+            "served_score_psi": 0.001581933093486181,
+            "played_score_psi": 0.06739629867474675,
+            "recall_at_10": 0.6076923076923076,
+            "recall_ci95": [
+              0.5128205128205129,
+              0.7205128205128205
+            ]
+          },
+          {
+            "events": 202,
+            "active_users": 82,
+            "recall_users": 64,
+            "popularity_psi": 0.9185432597360746,
+            "popularity_js_bits": 0.12620362287003484,
+            "served_score_psi": 0.003196863952516111,
+            "played_score_psi": 0.2240709801004444,
+            "recall_at_10": 0.5221354166666666,
+            "recall_ci95": [
+              0.4192708333333333,
+              0.6328125
+            ]
+          },
+          {
+            "events": 265,
+            "active_users": 97,
+            "recall_users": 73,
+            "popularity_psi": 0.7836339719144763,
+            "popularity_js_bits": 0.11015739724062279,
+            "served_score_psi": 0.001488891096454428,
+            "played_score_psi": 0.33779188606863236,
+            "recall_at_10": 0.4223744292237443,
+            "recall_ci95": [
+              0.3367579908675799,
+              0.5148401826484018
+            ]
+          },
+          {
+            "events": 239,
+            "active_users": 100,
+            "recall_users": 84,
+            "popularity_psi": 1.25737076465847,
+            "popularity_js_bits": 0.17147259606135695,
+            "served_score_psi": 0.005486058268788026,
+            "played_score_psi": 0.7086851271806665,
+            "recall_at_10": 0.34424603174603174,
+            "recall_ci95": [
+              0.26587301587301587,
+              0.4255952380952381
+            ]
+          },
+          {
+            "events": 242,
+            "active_users": 94,
+            "recall_users": 83,
+            "popularity_psi": 1.669447643082841,
+            "popularity_js_bits": 0.225997699082783,
+            "served_score_psi": 0.0008666919435524462,
+            "played_score_psi": 1.0875990948212937,
+            "recall_at_10": 0.40562248995983935,
+            "recall_ci95": [
+              0.32028112449799195,
+              0.497991967871486
+            ]
+          },
+          {
+            "events": 255,
+            "active_users": 97,
+            "recall_users": 83,
+            "popularity_psi": 1.8640542573741927,
+            "popularity_js_bits": 0.25142009682630706,
+            "served_score_psi": 0.0013267779839716682,
+            "played_score_psi": 1.0474953067011643,
+            "recall_at_10": 0.3313253012048193,
+            "recall_ci95": [
+              0.2520080321285141,
+              0.4136546184738956
+            ]
+          },
+          {
+            "events": 236,
+            "active_users": 97,
+            "recall_users": 91,
+            "popularity_psi": 2.083465715457793,
+            "popularity_js_bits": 0.2819492827677884,
+            "served_score_psi": 0.005576275071980854,
+            "played_score_psi": 1.716745574268591,
+            "recall_at_10": 0.20695970695970695,
+            "recall_ci95": [
+              0.14560439560439561,
+              0.27014652014652013
+            ]
+          },
+          {
+            "events": 229,
+            "active_users": 96,
+            "recall_users": 90,
+            "popularity_psi": 2.250631566773434,
+            "popularity_js_bits": 0.3129481322843295,
+            "served_score_psi": 0.0029788848296650452,
+            "played_score_psi": 2.0697906001526536,
+            "recall_at_10": 0.20833333333333334,
+            "recall_ci95": [
+              0.14074074074074072,
+              0.29259259259259257
+            ]
+          }
+        ],
+        "103": [
+          {
+            "events": 234,
+            "active_users": 95,
+            "recall_users": 66,
+            "popularity_psi": 0.791250551018202,
+            "popularity_js_bits": 0.11098715082928666,
+            "served_score_psi": 0.002265092135599568,
+            "played_score_psi": 0.09624366798918468,
+            "recall_at_10": 0.5643939393939394,
+            "recall_ci95": [
+              0.45075757575757575,
+              0.6742424242424242
+            ]
+          },
+          {
+            "events": 237,
+            "active_users": 97,
+            "recall_users": 67,
+            "popularity_psi": 0.6737248279973063,
+            "popularity_js_bits": 0.08973948560697552,
+            "served_score_psi": 0.0013505820165943332,
+            "played_score_psi": 0.14441188795737578,
+            "recall_at_10": 0.39676616915422885,
+            "recall_ci95": [
+              0.2997512437810945,
+              0.4975124378109453
+            ]
+          },
+          {
+            "events": 217,
+            "active_users": 85,
+            "recall_users": 67,
+            "popularity_psi": 1.1432026608413697,
+            "popularity_js_bits": 0.15634690081205152,
+            "served_score_psi": 0.0020499308215378266,
+            "played_score_psi": 0.3801400481385774,
+            "recall_at_10": 0.46393034825870644,
+            "recall_ci95": [
+              0.36442786069651745,
+              0.5646766169154229
+            ]
+          },
+          {
+            "events": 249,
+            "active_users": 98,
+            "recall_users": 80,
+            "popularity_psi": 1.0172379839371641,
+            "popularity_js_bits": 0.1396192904877236,
+            "served_score_psi": 0.0024820472723082305,
+            "played_score_psi": 0.5467247102976783,
+            "recall_at_10": 0.35104166666666664,
+            "recall_ci95": [
+              0.27708333333333335,
+              0.4520833333333333
+            ]
+          },
+          {
+            "events": 246,
+            "active_users": 94,
+            "recall_users": 81,
+            "popularity_psi": 1.434527631220981,
+            "popularity_js_bits": 0.19484345893201094,
+            "served_score_psi": 0.0020629881181926414,
+            "played_score_psi": 0.7350553453044699,
+            "recall_at_10": 0.3477366255144033,
+            "recall_ci95": [
+              0.2654320987654321,
+              0.4156378600823045
+            ]
+          },
+          {
+            "events": 264,
+            "active_users": 102,
+            "recall_users": 89,
+            "popularity_psi": 1.8592563901425274,
+            "popularity_js_bits": 0.24466715745106354,
+            "served_score_psi": 0.0013536928661462399,
+            "played_score_psi": 1.2589416816507246,
+            "recall_at_10": 0.25187265917602997,
+            "recall_ci95": [
+              0.19007490636704122,
+              0.3202247191011236
+            ]
+          },
+          {
+            "events": 256,
+            "active_users": 100,
+            "recall_users": 92,
+            "popularity_psi": 2.250389466533382,
+            "popularity_js_bits": 0.30410983010150444,
+            "served_score_psi": 0.000963317575596152,
+            "played_score_psi": 1.8162336113634376,
+            "recall_at_10": 0.20742753623188404,
+            "recall_ci95": [
+              0.13134057971014493,
+              0.2753623188405797
+            ]
+          },
+          {
+            "events": 235,
+            "active_users": 96,
+            "recall_users": 89,
+            "popularity_psi": 2.4744083623917907,
+            "popularity_js_bits": 0.32858729160653,
+            "served_score_psi": 0.0032444547339900345,
+            "played_score_psi": 1.979522381738135,
+            "recall_at_10": 0.23689138576779026,
+            "recall_ci95": [
+              0.1704119850187266,
+              0.3052434456928839
+            ]
+          }
+        ],
+        "104": [
+          {
+            "events": 241,
+            "active_users": 104,
+            "recall_users": 74,
+            "popularity_psi": 0.4992795239950987,
+            "popularity_js_bits": 0.07081173092174642,
+            "served_score_psi": 0.0020608224551620386,
+            "played_score_psi": 0.02752340555381413,
+            "recall_at_10": 0.5968468468468469,
+            "recall_ci95": [
+              0.49774774774774777,
+              0.6891891891891891
+            ]
+          },
+          {
+            "events": 228,
+            "active_users": 97,
+            "recall_users": 69,
+            "popularity_psi": 0.6797808998896777,
+            "popularity_js_bits": 0.08967326135369771,
+            "served_score_psi": 0.002992187728537596,
+            "played_score_psi": 0.11166669954769609,
+            "recall_at_10": 0.466183574879227,
+            "recall_ci95": [
+              0.3695652173913043,
+              0.5628019323671498
+            ]
+          },
+          {
+            "events": 250,
+            "active_users": 95,
+            "recall_users": 88,
+            "popularity_psi": 0.8193694969832213,
+            "popularity_js_bits": 0.12258397822948927,
+            "served_score_psi": 0.006091519581901917,
+            "played_score_psi": 0.5193634714364097,
+            "recall_at_10": 0.4848484848484848,
+            "recall_ci95": [
+              0.3939393939393939,
+              0.5738636363636364
+            ]
+          },
+          {
+            "events": 219,
+            "active_users": 91,
+            "recall_users": 76,
+            "popularity_psi": 1.1198255411335278,
+            "popularity_js_bits": 0.15721033899298642,
+            "served_score_psi": 0.002615025506097696,
+            "played_score_psi": 0.6891836106340615,
+            "recall_at_10": 0.26425438596491224,
+            "recall_ci95": [
+              0.1754385964912281,
+              0.37280701754385964
+            ]
+          },
+          {
+            "events": 238,
+            "active_users": 97,
+            "recall_users": 87,
+            "popularity_psi": 1.4377155384408393,
+            "popularity_js_bits": 0.19884402638984083,
+            "served_score_psi": 0.003363691468816766,
+            "played_score_psi": 0.9759683532964714,
+            "recall_at_10": 0.3716475095785441,
+            "recall_ci95": [
+              0.29022988505747127,
+              0.4559386973180076
+            ]
+          },
+          {
+            "events": 242,
+            "active_users": 95,
+            "recall_users": 88,
+            "popularity_psi": 1.8004021146799412,
+            "popularity_js_bits": 0.24373602378579173,
+            "served_score_psi": 0.001974222931089304,
+            "played_score_psi": 1.2770575685268652,
+            "recall_at_10": 0.28219696969696967,
+            "recall_ci95": [
+              0.20454545454545456,
+              0.35511363636363635
+            ]
+          },
+          {
+            "events": 236,
+            "active_users": 92,
+            "recall_users": 85,
+            "popularity_psi": 1.984921372780228,
+            "popularity_js_bits": 0.2632059729828352,
+            "served_score_psi": 0.0034691302096922223,
+            "played_score_psi": 2.0203921285735675,
+            "recall_at_10": 0.30098039215686273,
+            "recall_ci95": [
+              0.22647058823529412,
+              0.3784313725490196
+            ]
+          },
+          {
+            "events": 247,
+            "active_users": 101,
+            "recall_users": 97,
+            "popularity_psi": 2.6411257950105895,
+            "popularity_js_bits": 0.34893139988226174,
+            "served_score_psi": 0.0014479298153145317,
+            "played_score_psi": 2.4377102601952125,
+            "recall_at_10": 0.2027491408934708,
+            "recall_ci95": [
+              0.13144329896907217,
+              0.28264604810996563
+            ]
+          }
+        ],
+        "105": [
+          {
+            "events": 251,
+            "active_users": 100,
+            "recall_users": 66,
+            "popularity_psi": 0.6437834489961627,
+            "popularity_js_bits": 0.08704856063016082,
+            "served_score_psi": 0.003870717738994632,
+            "played_score_psi": 0.07002469905664184,
+            "recall_at_10": 0.4772727272727273,
+            "recall_ci95": [
+              0.369949494949495,
+              0.5883838383838385
+            ]
+          },
+          {
+            "events": 239,
+            "active_users": 95,
+            "recall_users": 68,
+            "popularity_psi": 0.686583145621096,
+            "popularity_js_bits": 0.09337872437458164,
+            "served_score_psi": 0.0019322438601727292,
+            "played_score_psi": 0.2236376213106559,
+            "recall_at_10": 0.45465686274509803,
+            "recall_ci95": [
+              0.3639705882352941,
+              0.5575980392156863
+            ]
+          },
+          {
+            "events": 222,
+            "active_users": 88,
+            "recall_users": 73,
+            "popularity_psi": 1.4058642531141472,
+            "popularity_js_bits": 0.17887326620999813,
+            "served_score_psi": 0.002120563662206559,
+            "played_score_psi": 0.5074718947029799,
+            "recall_at_10": 0.35159817351598177,
+            "recall_ci95": [
+              0.24429223744292236,
+              0.44063926940639264
+            ]
+          },
+          {
+            "events": 252,
+            "active_users": 94,
+            "recall_users": 77,
+            "popularity_psi": 1.0775368256017144,
+            "popularity_js_bits": 0.15047855411893485,
+            "served_score_psi": 0.004658359460046164,
+            "played_score_psi": 0.6616084055383291,
+            "recall_at_10": 0.3625541125541126,
+            "recall_ci95": [
+              0.2813852813852814,
+              0.45346320346320346
+            ]
+          },
+          {
+            "events": 232,
+            "active_users": 99,
+            "recall_users": 84,
+            "popularity_psi": 1.5470771923676248,
+            "popularity_js_bits": 0.20356807577723585,
+            "served_score_psi": 0.0029425044463026223,
+            "played_score_psi": 0.9553734368760622,
+            "recall_at_10": 0.3005952380952381,
+            "recall_ci95": [
+              0.2251984126984127,
+              0.39186507936507936
+            ]
+          },
+          {
+            "events": 236,
+            "active_users": 97,
+            "recall_users": 92,
+            "popularity_psi": 1.536989309253852,
+            "popularity_js_bits": 0.2087607865866199,
+            "served_score_psi": 0.0029879653061897246,
+            "played_score_psi": 1.2496333981861083,
+            "recall_at_10": 0.3496376811594203,
+            "recall_ci95": [
+              0.27083333333333337,
+              0.4338768115942029
+            ]
+          },
+          {
+            "events": 256,
+            "active_users": 98,
+            "recall_users": 91,
+            "popularity_psi": 1.8044800048910394,
+            "popularity_js_bits": 0.24242208993059605,
+            "served_score_psi": 0.0018778048462706801,
+            "played_score_psi": 1.3577943991962917,
+            "recall_at_10": 0.2765567765567766,
+            "recall_ci95": [
+              0.21062271062271062,
+              0.36080586080586086
+            ]
+          },
+          {
+            "events": 243,
+            "active_users": 96,
+            "recall_users": 91,
+            "popularity_psi": 2.2493238987800446,
+            "popularity_js_bits": 0.2951016846705419,
+            "served_score_psi": 0.0021976753961613503,
+            "played_score_psi": 1.8012529785983382,
+            "recall_at_10": 0.23717948717948717,
+            "recall_ci95": [
+              0.17582417582417584,
+              0.31227106227106227
+            ]
+          }
+        ]
+      },
+      "weekly_mean": {
+        "popularity_psi": [
+          0.6303331674732993,
+          0.7440369125524651,
+          1.0246421947729845,
+          1.12506238939199,
+          1.5415103113561286,
+          1.8214729938461371,
+          2.130663696298602,
+          2.407043188096095
+        ],
+        "popularity_js_bits": [
+          0.08813966272933109,
+          0.10175473741697119,
+          0.139274596172947,
+          0.15519651722034006,
+          0.20773829391356657,
+          0.24633977975429205,
+          0.2838365389921715,
+          0.3203095887017783
+        ],
+        "served_score_psi": [
+          0.002265922954694526,
+          0.0024294474830419957,
+          0.003948319789332629,
+          0.0044169907055126734,
+          0.002624700296194645,
+          0.0021306501927104895,
+          0.0029460448900741985,
+          0.002469517890579414
+        ],
+        "played_score_psi": [
+          0.06774438753396274,
+          0.17709110719783627,
+          0.4053657123660595,
+          0.6347569867366387,
+          0.9309309316698664,
+          1.2778848404548904,
+          1.7804662468510966,
+          2.077613586162437
+        ],
+        "recall_at_10": [
+          0.5546257796257796,
+          0.46030134586551463,
+          0.43077250939160566,
+          0.34575257271967796,
+          0.3537250237923957,
+          0.304057246885129,
+          0.23787763600423445,
+          0.2116051375199227
+        ]
+      },
+      "weekly_min": {
+        "popularity_psi": [
+          0.4992795239950987,
+          0.6737248279973063,
+          0.7836339719144763,
+          1.0172379839371641,
+          1.434527631220981,
+          1.536989309253852,
+          1.8044800048910394,
+          2.2493238987800446
+        ],
+        "popularity_js_bits": [
+          0.07081173092174642,
+          0.08967326135369771,
+          0.11015739724062279,
+          0.1396192904877236,
+          0.19484345893201094,
+          0.2087607865866199,
+          0.24242208993059605,
+          0.2951016846705419
+        ],
+        "served_score_psi": [
+          0.0015510493502302117,
+          0.0013505820165943332,
+          0.001488891096454428,
+          0.0024820472723082305,
+          0.0008666919435524462,
+          0.0013267779839716682,
+          0.000963317575596152,
+          0.0014479298153145317
+        ],
+        "played_score_psi": [
+          0.02752340555381413,
+          0.11166669954769609,
+          0.282061261483698,
+          0.5467247102976783,
+          0.7350553453044699,
+          1.0474953067011643,
+          1.3577943991962917,
+          1.8012529785983382
+        ],
+        "recall_at_10": [
+          0.4772727272727273,
+          0.39676616915422885,
+          0.35159817351598177,
+          0.26425438596491224,
+          0.3005952380952381,
+          0.25187265917602997,
+          0.19746376811594205,
+          0.17287234042553193
+        ]
+      },
+      "weekly_max": {
+        "popularity_psi": [
+          0.791250551018202,
+          0.9185432597360746,
+          1.4058642531141472,
+          1.25737076465847,
+          1.669447643082841,
+          2.0466628977801715,
+          2.5300619218305687,
+          2.6411257950105895
+        ],
+        "popularity_js_bits": [
+          0.11098715082928666,
+          0.12620362287003484,
+          0.17887326620999813,
+          0.17147259606135695,
+          0.225997699082783,
+          0.28311483412167815,
+          0.32749551917813324,
+          0.34893139988226174
+        ],
+        "served_score_psi": [
+          0.003870717738994632,
+          0.003196863952516111,
+          0.007990693784562417,
+          0.0068434630203232484,
+          0.0038876255041087483,
+          0.003010591876155511,
+          0.005576275071980854,
+          0.0032444547339900345
+        ],
+        "played_score_psi": [
+          0.09624366798918468,
+          0.2240709801004444,
+          0.5193634714364097,
+          0.7086851271806665,
+          1.0875990948212937,
+          1.5562962472095891,
+          2.0203921285735675,
+          2.4377102601952125
+        ],
+        "recall_at_10": [
+          0.6076923076923076,
+          0.5221354166666666,
+          0.4848484848484848,
+          0.4066666666666667,
+          0.40562248995983935,
+          0.3496376811594203,
+          0.30098039215686273,
+          0.23717948717948717
+        ]
+      }
+    }
+  },
+  "alerts_by_week": {
+    "popularity_psi": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "popularity_js_bits": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "served_score_psi": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "played_score_psi": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "recall_at_10": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "first_alert_week": {
+    "popularity_psi": 1,
+    "popularity_js_bits": 1,
+    "served_score_psi": null,
+    "played_score_psi": 1,
+    "recall_at_10": 1
+  },
+  "control_recall_alerts_by_week": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "rule_of_thumb_psi_0_25_weeks_exceeded_in_control": {
+    "popularity_psi": 8,
+    "served_score_psi": 0,
+    "played_score_psi": 0
+  },
+  "rule_of_thumb_psi_0_25_weeks_exceeded_in_drift": {
+    "popularity_psi": 8,
+    "served_score_psi": 0,
+    "played_score_psi": 6
+  }
+}

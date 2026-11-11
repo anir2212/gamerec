@@ -1,0 +1,864 @@
+{
+  "data": "seeded synthetic only, no real record used",
+  "corpus_seed": 7,
+  "model_seed": 7,
+  "neural_seeds": [
+    11,
+    23,
+    37,
+    41,
+    53
+  ],
+  "protocol": {
+    "path": "docs/TIEBREAK_PROTOCOL.md",
+    "sha256": "4c25b2c8c85d1f88c74debb40822d07df6932e650f97d8ba4832f865d96c3c0a",
+    "first_commit": "b3dc67917c1b254498c57186c385462275380d75",
+    "rule": "exact float score ties ordered by blake2b(salt|permutation|item_id); metric is the mean over the 20 declared permutations",
+    "salt": "p04-gamerec/tiebreak/v1|",
+    "permutations": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "split_sha256": {
+    "train": "4962950113df0c23cccf6ad0704fc9f773e1fa5c5877870d280c0a52d416e0f7",
+    "validation": "885d6e2d01c86fbd3f39cb36857126da8af07069c3b02f1a086fa523650b4b58"
+  },
+  "test_split_read_by_selection": false,
+  "selection_metric": "expected validation ndcg@10 under TB-1, mean over tie permutations and model seeds",
+  "baselines_validation": {
+    "popularity": {
+      "users": 100,
+      "ndcg": 0.2176196668884004,
+      "ci95": [
+        0.17089164016994973,
+        0.2660874041111214
+      ],
+      "model_seeds": 1,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.0,
+      "sd_between_tie_permutations": 2.8476619731297836e-17,
+      "ndcg_min_over_runs": 0.2176196668884004,
+      "ndcg_max_over_runs": 0.2176196668884004,
+      "ndcg_lowest_id_rule": 0.2176196668884004,
+      "novelty": 5.068615787219206,
+      "catalog_coverage": 0.2125
+    },
+    "itemknn": {
+      "users": 100,
+      "ndcg": 0.35330342035531315,
+      "ci95": [
+        0.29967185411182573,
+        0.4030903996848599
+      ],
+      "model_seeds": 1,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.0,
+      "sd_between_tie_permutations": 0.0,
+      "ndcg_min_over_runs": 0.35330342035531315,
+      "ndcg_max_over_runs": 0.35330342035531315,
+      "ndcg_lowest_id_rule": 0.35330342035531315,
+      "novelty": 7.49619706161306,
+      "catalog_coverage": 0.95
+    },
+    "als": {
+      "users": 100,
+      "ndcg": 0.1603438490945132,
+      "ci95": [
+        0.12233271056474175,
+        0.20259020685905685
+      ],
+      "model_seeds": 1,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.0,
+      "sd_between_tie_permutations": 0.0,
+      "ndcg_min_over_runs": 0.1603438490945132,
+      "ndcg_max_over_runs": 0.1603438490945132,
+      "ndcg_lowest_id_rule": 0.1603438490945132,
+      "novelty": 7.4140244440622665,
+      "catalog_coverage": 0.9875
+    },
+    "bpr": {
+      "users": 100,
+      "ndcg": 0.30795738460836214,
+      "ci95": [
+        0.25735374562314467,
+        0.3624542099392362
+      ],
+      "model_seeds": 1,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.0,
+      "sd_between_tie_permutations": 0.0,
+      "ndcg_min_over_runs": 0.30795738460836214,
+      "ndcg_max_over_runs": 0.30795738460836214,
+      "ndcg_lowest_id_rule": 0.30795738460836214,
+      "novelty": 7.552746098520479,
+      "catalog_coverage": 0.95
+    },
+    "content": {
+      "users": 100,
+      "ndcg": 0.37032401970987977,
+      "ci95": [
+        0.3174554232705885,
+        0.4218779691072132
+      ],
+      "model_seeds": 1,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.0,
+      "sd_between_tie_permutations": 0.0,
+      "ndcg_min_over_runs": 0.37032401970987977,
+      "ndcg_max_over_runs": 0.37032401970987977,
+      "ndcg_lowest_id_rule": 0.37032401970987977,
+      "novelty": 7.683966746827978,
+      "catalog_coverage": 0.9875
+    },
+    "text": {
+      "users": 100,
+      "ndcg": 0.30955552717568124,
+      "ci95": [
+        0.26803785582145734,
+        0.3521585147395819
+      ],
+      "model_seeds": 1,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.0,
+      "sd_between_tie_permutations": 0.011411289889345949,
+      "ndcg_min_over_runs": 0.2869510200727866,
+      "ndcg_max_over_runs": 0.33429586181672766,
+      "ndcg_lowest_id_rule": 0.38750422088965564,
+      "novelty": 7.909150424267076,
+      "catalog_coverage": 0.9862500000000001
+    }
+  },
+  "two_tower_grid": [
+    {
+      "config": {
+        "dim": 16,
+        "temperature": 0.2,
+        "logq": false,
+        "epochs": 5,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.3149067224178481,
+      "ci95": [
+        0.27173809810763633,
+        0.36015835258311735
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.00889331923169646,
+      "sd_between_tie_permutations": 0.002612925424449555,
+      "ndcg_min_over_runs": 0.2943407393275834,
+      "ndcg_max_over_runs": 0.3264547663098072,
+      "ndcg_lowest_id_rule": 0.3203230634358576,
+      "novelty": 7.9650007325821335,
+      "catalog_coverage": 0.9925
+    },
+    {
+      "config": {
+        "dim": 16,
+        "temperature": 0.2,
+        "logq": true,
+        "epochs": 5,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.34840949533347426,
+      "ci95": [
+        0.29899876226916905,
+        0.40054722967360773
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.010604907121729595,
+      "sd_between_tie_permutations": 0.0014295734084747353,
+      "ndcg_min_over_runs": 0.3375736532132668,
+      "ndcg_max_over_runs": 0.37149129820570265,
+      "ndcg_lowest_id_rule": 0.3505147753671401,
+      "novelty": 6.587310498815977,
+      "catalog_coverage": 0.89375
+    },
+    {
+      "config": {
+        "dim": 16,
+        "temperature": 0.2,
+        "logq": false,
+        "epochs": 10,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.3001219726149102,
+      "ci95": [
+        0.25692210749639943,
+        0.3457735818652501
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.015092477695680997,
+      "sd_between_tie_permutations": 0.002784169273252504,
+      "ndcg_min_over_runs": 0.27460131152092043,
+      "ndcg_max_over_runs": 0.31815517602350957,
+      "ndcg_lowest_id_rule": 0.3049175281392335,
+      "novelty": 7.935683228724416,
+      "catalog_coverage": 1.0
+    },
+    {
+      "config": {
+        "dim": 16,
+        "temperature": 0.2,
+        "logq": true,
+        "epochs": 10,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.34203630408805047,
+      "ci95": [
+        0.2912065797965609,
+        0.39497274943910765
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.00897979257161687,
+      "sd_between_tie_permutations": 0.0010518912602890335,
+      "ndcg_min_over_runs": 0.3332388164189996,
+      "ndcg_max_over_runs": 0.3597773127489093,
+      "ndcg_lowest_id_rule": 0.3440271556959481,
+      "novelty": 6.560438153805852,
+      "catalog_coverage": 0.88
+    },
+    {
+      "config": {
+        "dim": 16,
+        "temperature": 0.2,
+        "logq": false,
+        "epochs": 20,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.29512417114562967,
+      "ci95": [
+        0.2529997984805625,
+        0.34237513218471916
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.011980809533368594,
+      "sd_between_tie_permutations": 0.002376318675486412,
+      "ndcg_min_over_runs": 0.28016008432100664,
+      "ndcg_max_over_runs": 0.32248160398404324,
+      "ndcg_lowest_id_rule": 0.29841807512967344,
+      "novelty": 7.817699809679909,
+      "catalog_coverage": 0.9858750000000001
+    },
+    {
+      "config": {
+        "dim": 16,
+        "temperature": 0.2,
+        "logq": true,
+        "epochs": 20,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.3322501933272443,
+      "ci95": [
+        0.2833832782434854,
+        0.3865619451253525
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.010037146439222266,
+      "sd_between_tie_permutations": 0.0017565893182339809,
+      "ndcg_min_over_runs": 0.3198380056601857,
+      "ndcg_max_over_runs": 0.35253663384037076,
+      "ndcg_lowest_id_rule": 0.335021405980413,
+      "novelty": 6.44578526763672,
+      "catalog_coverage": 0.862875
+    },
+    {
+      "config": {
+        "dim": 32,
+        "temperature": 0.2,
+        "logq": false,
+        "epochs": 5,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.31504910407642944,
+      "ci95": [
+        0.26597150727758434,
+        0.3561516245144275
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.010777366056250607,
+      "sd_between_tie_permutations": 0.0023854970820136774,
+      "ndcg_min_over_runs": 0.29067592496216255,
+      "ndcg_max_over_runs": 0.32431870232768584,
+      "ndcg_lowest_id_rule": 0.31946587753723676,
+      "novelty": 7.959337892553857,
+      "catalog_coverage": 0.9975
+    },
+    {
+      "config": {
+        "dim": 32,
+        "temperature": 0.2,
+        "logq": true,
+        "epochs": 5,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.3515984478895011,
+      "ci95": [
+        0.30049997107327314,
+        0.4068231707743235
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.014286998373101985,
+      "sd_between_tie_permutations": 0.0018278947858748546,
+      "ndcg_min_over_runs": 0.3313570642605796,
+      "ndcg_max_over_runs": 0.37113848062005217,
+      "ndcg_lowest_id_rule": 0.35308485550927926,
+      "novelty": 6.626982123879043,
+      "catalog_coverage": 0.9
+    },
+    {
+      "config": {
+        "dim": 32,
+        "temperature": 0.2,
+        "logq": false,
+        "epochs": 10,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.29586374814930566,
+      "ci95": [
+        0.2547076613337861,
+        0.33800761413662994
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.009329459240540693,
+      "sd_between_tie_permutations": 0.0028960588389229094,
+      "ndcg_min_over_runs": 0.2743715568867718,
+      "ndcg_max_over_runs": 0.3097020370749117,
+      "ndcg_lowest_id_rule": 0.2999561152786913,
+      "novelty": 7.959516583867273,
+      "catalog_coverage": 0.9925
+    },
+    {
+      "config": {
+        "dim": 32,
+        "temperature": 0.2,
+        "logq": true,
+        "epochs": 10,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.3405119000270363,
+      "ci95": [
+        0.28844695830056416,
+        0.3954032505790265
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.009342379474619768,
+      "sd_between_tie_permutations": 0.0022510163506329235,
+      "ndcg_min_over_runs": 0.31974558600895175,
+      "ndcg_max_over_runs": 0.3518816871834368,
+      "ndcg_lowest_id_rule": 0.3443678466798783,
+      "novelty": 6.62410203666726,
+      "catalog_coverage": 0.89875
+    },
+    {
+      "config": {
+        "dim": 32,
+        "temperature": 0.2,
+        "logq": false,
+        "epochs": 20,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.2973405761491445,
+      "ci95": [
+        0.25219244228727844,
+        0.3436476128675327
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.018296697197558307,
+      "sd_between_tie_permutations": 0.0023437631426649307,
+      "ndcg_min_over_runs": 0.269393818917882,
+      "ndcg_max_over_runs": 0.32126033324758696,
+      "ndcg_lowest_id_rule": 0.30153373257650756,
+      "novelty": 7.855696264311011,
+      "catalog_coverage": 0.9825
+    },
+    {
+      "config": {
+        "dim": 32,
+        "temperature": 0.2,
+        "logq": true,
+        "epochs": 20,
+        "batch_size": 64,
+        "lr": 0.005,
+        "weight_decay": 1e-05,
+        "id_dropout": 0.1,
+        "variant": "hybrid"
+      },
+      "users": 100,
+      "ndcg": 0.32091505142381904,
+      "ci95": [
+        0.2695840846887654,
+        0.37374105184158557
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.009869149247980807,
+      "sd_between_tie_permutations": 0.0013710321995452637,
+      "ndcg_min_over_runs": 0.3075297037427636,
+      "ndcg_max_over_runs": 0.3386695318492716,
+      "ndcg_lowest_id_rule": 0.32382638145033,
+      "novelty": 6.38179949272115,
+      "catalog_coverage": 0.8490000000000001
+    }
+  ],
+  "two_tower_selected": {
+    "dim": 32,
+    "temperature": 0.2,
+    "logq": true,
+    "epochs": 5,
+    "batch_size": 64,
+    "lr": 0.005,
+    "weight_decay": 1e-05,
+    "id_dropout": 0.1,
+    "variant": "hybrid"
+  },
+  "reranker_grid": [
+    {
+      "config": {
+        "num_leaves": 7,
+        "rounds": 50,
+        "features": "plan",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.3692860272866121,
+      "ci95": [
+        0.318283434095358,
+        0.42613683104562017
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.011003692684803367,
+      "sd_between_tie_permutations": 0.000509525840192139,
+      "ndcg_min_over_runs": 0.35921814324370094,
+      "ndcg_max_over_runs": 0.3914977187706134,
+      "ndcg_lowest_id_rule": 0.3678936132917292,
+      "novelty": 6.426164595155984,
+      "catalog_coverage": 0.963875
+    },
+    {
+      "config": {
+        "num_leaves": 7,
+        "rounds": 150,
+        "features": "plan",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.35201993721745195,
+      "ci95": [
+        0.3052499358169839,
+        0.4060846012702101
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.009372595076474638,
+      "sd_between_tie_permutations": 0.00018297269003759913,
+      "ndcg_min_over_runs": 0.3444422760930813,
+      "ndcg_max_over_runs": 0.3683485111226076,
+      "ndcg_lowest_id_rule": 0.35220514214038995,
+      "novelty": 6.493568716075048,
+      "catalog_coverage": 0.99
+    },
+    {
+      "config": {
+        "num_leaves": 15,
+        "rounds": 50,
+        "features": "plan",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.3534153720022711,
+      "ci95": [
+        0.3107410497509012,
+        0.40441473939393047
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.00787058699008985,
+      "sd_between_tie_permutations": 0.0003768693356091911,
+      "ndcg_min_over_runs": 0.3396379978971115,
+      "ndcg_max_over_runs": 0.3596949252366077,
+      "ndcg_lowest_id_rule": 0.35300939904872225,
+      "novelty": 6.447471301116337,
+      "catalog_coverage": 0.955
+    },
+    {
+      "config": {
+        "num_leaves": 15,
+        "rounds": 150,
+        "features": "plan",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.342852322924266,
+      "ci95": [
+        0.2973621207997514,
+        0.392408255516684
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.005373608074037459,
+      "sd_between_tie_permutations": 0.0,
+      "ndcg_min_over_runs": 0.33463959345410116,
+      "ndcg_max_over_runs": 0.3489055494157406,
+      "ndcg_lowest_id_rule": 0.342852322924266,
+      "novelty": 6.498711770588371,
+      "catalog_coverage": 0.9885
+    },
+    {
+      "config": {
+        "num_leaves": 7,
+        "rounds": 50,
+        "features": "plus",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.3651481642935171,
+      "ci95": [
+        0.31348214121692375,
+        0.418429959439038
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.008646217322803768,
+      "sd_between_tie_permutations": 0.000638062238851676,
+      "ndcg_min_over_runs": 0.35017523355895536,
+      "ndcg_max_over_runs": 0.37572550800338833,
+      "ndcg_lowest_id_rule": 0.36377986067409795,
+      "novelty": 6.470096445885718,
+      "catalog_coverage": 0.9533750000000001
+    },
+    {
+      "config": {
+        "num_leaves": 7,
+        "rounds": 150,
+        "features": "plus",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.35748932338981115,
+      "ci95": [
+        0.3075483269650712,
+        0.405047292611952
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.010356219009356522,
+      "sd_between_tie_permutations": 0.00037203344047345683,
+      "ndcg_min_over_runs": 0.3472843512592776,
+      "ndcg_max_over_runs": 0.37416119366889455,
+      "ndcg_lowest_id_rule": 0.3571101134180163,
+      "novelty": 6.545128628727898,
+      "catalog_coverage": 0.98
+    },
+    {
+      "config": {
+        "num_leaves": 15,
+        "rounds": 50,
+        "features": "plus",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.35748529802794543,
+      "ci95": [
+        0.30556737246966015,
+        0.4082681278659875
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.010551728869003647,
+      "sd_between_tie_permutations": 0.00013392664325549944,
+      "ndcg_min_over_runs": 0.34230475959591244,
+      "ndcg_max_over_runs": 0.36585118744448514,
+      "ndcg_lowest_id_rule": 0.3576846943664232,
+      "novelty": 6.46421989136948,
+      "catalog_coverage": 0.9475
+    },
+    {
+      "config": {
+        "num_leaves": 15,
+        "rounds": 150,
+        "features": "plus",
+        "learning_rate": 0.05,
+        "min_data_in_leaf": 20
+      },
+      "users": 100,
+      "ndcg": 0.34187163767470174,
+      "ci95": [
+        0.2882800381209264,
+        0.39153632906711744
+      ],
+      "model_seeds": 5,
+      "tie_permutations": 20,
+      "sd_between_model_seeds": 0.012548027985989895,
+      "sd_between_tie_permutations": 0.0,
+      "ndcg_min_over_runs": 0.32812909889902875,
+      "ndcg_max_over_runs": 0.3558676419211586,
+      "ndcg_lowest_id_rule": 0.34187163767470174,
+      "novelty": 6.596930512445048,
+      "catalog_coverage": 0.9775
+    }
+  ],
+  "reranker_selected": {
+    "num_leaves": 7,
+    "rounds": 50,
+    "features": "plan",
+    "learning_rate": 0.05,
+    "min_data_in_leaf": 20
+  },
+  "validation_leaderboard_tb1": {
+    "content": 0.37032401970987977,
+    "reranker": 0.3692860272866121,
+    "itemknn": 0.35330342035531315,
+    "two_tower": 0.3515984478895011,
+    "text": 0.30955552717568124,
+    "bpr": 0.30795738460836214,
+    "popularity": 0.2176196668884004,
+    "als": 0.1603438490945132
+  },
+  "validation_leaderboard_lowest_id_recomputed": {
+    "text": 0.38750422088965564,
+    "content": 0.37032401970987977,
+    "reranker": 0.3678936132917292,
+    "itemknn": 0.35330342035531315,
+    "two_tower": 0.35308485550927926,
+    "bpr": 0.30795738460836214,
+    "popularity": 0.2176196668884004,
+    "als": 0.1603438490945132
+  },
+  "validation_winner_tb1": "content",
+  "validation_winner_lowest_id_recomputed": "text",
+  "winner_minus_text_validation_ndcg10_descriptive": {
+    "tb1": {
+      "a": "content",
+      "b": "text",
+      "subset": "all",
+      "users": 100,
+      "metric": "ndcg",
+      "mean_difference": 0.06076849253419854,
+      "ci95": [
+        0.026894261509269372,
+        0.09659030283522517
+      ],
+      "ci_excludes_zero": true,
+      "users_a_better": 42,
+      "users_b_better": 36,
+      "users_tied": 22
+    },
+    "lowest_id": {
+      "a": "content",
+      "b": "text",
+      "subset": "all",
+      "users": 100,
+      "metric": "ndcg",
+      "mean_difference": -0.01718020117977586,
+      "ci95": [
+        -0.035397615514032574,
+        0.0020607163550935854
+      ],
+      "ci_excludes_zero": false,
+      "users_a_better": 19,
+      "users_b_better": 34,
+      "users_tied": 47
+    }
+  },
+  "reranker_note": "the re-ranker fits validation labels; its validation row is out of fold",
+  "popularity_neutrality": {
+    "per_permutation": [
+      {
+        "permutation": 0,
+        "spearman_key_vs_popularity": -0.13616971401781527,
+        "spearman_key_vs_item_index": 0.09163150492264417
+      },
+      {
+        "permutation": 1,
+        "spearman_key_vs_popularity": -0.019292076887013596,
+        "spearman_key_vs_item_index": 0.09418659165494608
+      },
+      {
+        "permutation": 2,
+        "spearman_key_vs_popularity": -0.023909985935302393,
+        "spearman_key_vs_item_index": -0.0426629160806376
+      },
+      {
+        "permutation": 3,
+        "spearman_key_vs_popularity": 0.01118143459915612,
+        "spearman_key_vs_item_index": 0.02920768870135959
+      },
+      {
+        "permutation": 4,
+        "spearman_key_vs_popularity": 0.006586966713548993,
+        "spearman_key_vs_item_index": 0.013338021565869669
+      },
+      {
+        "permutation": 5,
+        "spearman_key_vs_popularity": 0.07135489920300048,
+        "spearman_key_vs_item_index": -0.018471636193155182
+      },
+      {
+        "permutation": 6,
+        "spearman_key_vs_popularity": 0.24716361931551806,
+        "spearman_key_vs_item_index": -0.17238631036099392
+      },
+      {
+        "permutation": 7,
+        "spearman_key_vs_popularity": 0.04535864978902954,
+        "spearman_key_vs_item_index": -0.026722925457102677
+      },
+      {
+        "permutation": 8,
+        "spearman_key_vs_popularity": -0.23905297702766062,
+        "spearman_key_vs_item_index": 0.2214252226910455
+      },
+      {
+        "permutation": 9,
+        "spearman_key_vs_popularity": -0.1518284106891702,
+        "spearman_key_vs_item_index": 0.08520862634786686
+      },
+      {
+        "permutation": 10,
+        "spearman_key_vs_popularity": 0.11106422878574777,
+        "spearman_key_vs_item_index": -0.14789029535864978
+      },
+      {
+        "permutation": 11,
+        "spearman_key_vs_popularity": -0.1636896390060947,
+        "spearman_key_vs_item_index": 0.10860290670417252
+      },
+      {
+        "permutation": 12,
+        "spearman_key_vs_popularity": -0.09753867791842476,
+        "spearman_key_vs_item_index": 0.07325363338021565
+      },
+      {
+        "permutation": 13,
+        "spearman_key_vs_popularity": 0.12679324894514768,
+        "spearman_key_vs_item_index": -0.07597280825128927
+      },
+      {
+        "permutation": 14,
+        "spearman_key_vs_popularity": 0.010853258321612753,
+        "spearman_key_vs_item_index": 0.0216361931551805
+      },
+      {
+        "permutation": 15,
+        "spearman_key_vs_popularity": 0.18820909517112053,
+        "spearman_key_vs_item_index": -0.13802156586966716
+      },
+      {
+        "permutation": 16,
+        "spearman_key_vs_popularity": 0.1356305672761369,
+        "spearman_key_vs_item_index": -0.09367088607594938
+      },
+      {
+        "permutation": 17,
+        "spearman_key_vs_popularity": -0.04953117674636662,
+        "spearman_key_vs_item_index": -0.010571964369432725
+      },
+      {
+        "permutation": 18,
+        "spearman_key_vs_popularity": 0.027871542428504457,
+        "spearman_key_vs_item_index": -0.028504453820909516
+      },
+      {
+        "permutation": 19,
+        "spearman_key_vs_popularity": 0.16797937177684014,
+        "spearman_key_vs_item_index": -0.1282231598687295
+      }
+    ],
+    "mean_abs_spearman_key_vs_popularity": 0.1015529770276606,
+    "mean_abs_spearman_key_vs_item_index": 0.08107946554149087
+  }
+}

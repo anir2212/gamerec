@@ -1,0 +1,28 @@
+{
+  "label": "one loopback uvicorn check on seeded synthetic data; not a deployed service",
+  "registry": "runs/registry_demo",
+  "health_before": {
+    "status": "ok",
+    "data": "seeded synthetic",
+    "model": "local-baselines",
+    "champion_version": null
+  },
+  "champion_before_reload_status": 409,
+  "reload_status": 200,
+  "reload": {
+    "champion_version": "v0002",
+    "data": "seeded synthetic"
+  },
+  "health_after": {
+    "status": "ok",
+    "data": "seeded synthetic",
+    "model": "local-baselines",
+    "champion_version": "v0002"
+  },
+  "champion_version_served": "v0002",
+  "items": [
+    "g001",
+    "g002",
+    "g003"
+  ]
+}
