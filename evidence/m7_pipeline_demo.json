@@ -1,0 +1,297 @@
+{
+  "label": "seeded synthetic data, local file registry, in-process API client; no deployed service",
+  "tolerance": 0.005,
+  "stages": [
+    {
+      "stage": "first_champion",
+      "summary": {
+        "fault": "none",
+        "model_seed": 11,
+        "evaluation_error": null,
+        "gate": {
+          "passed": true,
+          "reason": "first_champion",
+          "candidate_value": 0.33746881444013765,
+          "champion_value": null,
+          "threshold": 0.2176196668884004
+        },
+        "candidate_model": "two_tower",
+        "champion_before": null,
+        "register": {
+          "outcome": "promoted",
+          "version": "v0001"
+        },
+        "deploy": {
+          "outcome": "reloaded",
+          "reloaded_version": "v0001"
+        },
+        "status": "promoted",
+        "champion_after": "v0001"
+      },
+      "registry_before": {
+        "champion": null
+      },
+      "registry_after": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_unchanged": false,
+      "served_before": {
+        "status_code": 409,
+        "items": null,
+        "version": null
+      },
+      "served_after": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "health_version": "v0001"
+    },
+    {
+      "stage": "same_seed_rerun",
+      "summary": {
+        "fault": "none",
+        "model_seed": 11,
+        "evaluation_error": null,
+        "gate": {
+          "passed": true,
+          "reason": "within_tolerance_of_champion",
+          "candidate_value": 0.33746881444013765,
+          "champion_value": 0.33746881444013765,
+          "threshold": 0.33246881444013765
+        },
+        "candidate_model": "two_tower",
+        "champion_before": "v0001",
+        "register": {
+          "outcome": "no_change",
+          "version": "v0001"
+        },
+        "deploy": {
+          "outcome": "reloaded",
+          "reloaded_version": "v0001"
+        },
+        "status": "no_change",
+        "champion_after": "v0001"
+      },
+      "registry_before": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_after": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_unchanged": true,
+      "served_before": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "served_after": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "health_version": "v0001"
+    },
+    {
+      "stage": "degraded_candidate",
+      "summary": {
+        "fault": "degrade_candidate",
+        "model_seed": 11,
+        "evaluation_error": null,
+        "gate": {
+          "passed": false,
+          "reason": "below_champion_minus_tolerance",
+          "candidate_value": 0.07645475638268666,
+          "champion_value": 0.33746881444013765,
+          "threshold": 0.33246881444013765
+        },
+        "candidate_model": "als",
+        "champion_before": "v0001",
+        "status": "blocked",
+        "champion_after": "v0001"
+      },
+      "registry_before": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_after": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_unchanged": true,
+      "served_before": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "served_after": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "health_version": "v0001"
+    },
+    {
+      "stage": "failed_evaluation",
+      "summary": {
+        "fault": "evaluation_error",
+        "model_seed": 11,
+        "evaluation_error": "injected evaluation failure",
+        "gate": {
+          "passed": false,
+          "reason": "evaluation_failed",
+          "candidate_value": null,
+          "champion_value": null,
+          "threshold": null
+        },
+        "candidate_model": null,
+        "champion_before": "v0001",
+        "status": "blocked",
+        "champion_after": "v0001"
+      },
+      "registry_before": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_after": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_unchanged": true,
+      "served_before": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "served_after": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "health_version": "v0001"
+    },
+    {
+      "stage": "retrain_other_seed",
+      "summary": {
+        "fault": "none",
+        "model_seed": 23,
+        "evaluation_error": null,
+        "gate": {
+          "passed": true,
+          "reason": "within_tolerance_of_champion",
+          "candidate_value": 0.3406989309057383,
+          "champion_value": 0.33746881444013765,
+          "threshold": 0.33246881444013765
+        },
+        "candidate_model": "two_tower",
+        "champion_before": "v0001",
+        "register": {
+          "outcome": "promoted",
+          "version": "v0002"
+        },
+        "deploy": {
+          "outcome": "reloaded",
+          "reloaded_version": "v0002"
+        },
+        "status": "promoted",
+        "champion_after": "v0002"
+      },
+      "registry_before": {
+        "champion": "v0001",
+        "pointer_sha256": "7da059bda7daf6740eb113a8ce83ec11baf6d4b2a9adeb9c18adf3de9191d746",
+        "scores_sha256": "155b5e2ec0b3fa23bf52dabe791f288daaee26bd65be1612213fdef0d0d7ee35",
+        "metadata_sha256": "deb404d7fd2fbfb6d74947e920def18ce85d93824a4f32ac3e50f990623f2cc8"
+      },
+      "registry_after": {
+        "champion": "v0002",
+        "pointer_sha256": "bf69dca0dcc74a039a49b76c5527d793780e2f9df5aedffe713a18ebacb0e294",
+        "scores_sha256": "cc24be6c751810980ede02c10264c44ace929c96e0dec24768f2ec524a2ac60b",
+        "metadata_sha256": "f87a5427a8804ba86ededce7960da18ddf73d7521873d634beb9295ebeb69535"
+      },
+      "registry_unchanged": false,
+      "served_before": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g003",
+          "g002",
+          "g035",
+          "g011"
+        ],
+        "version": "v0001"
+      },
+      "served_after": {
+        "status_code": 200,
+        "items": [
+          "g001",
+          "g002",
+          "g003",
+          "g030",
+          "g017"
+        ],
+        "version": "v0002"
+      },
+      "health_version": "v0002"
+    }
+  ],
+  "decisions_logged": 5
+}
